@@ -1,0 +1,38 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Assistant:300,400,600,700,800');
+@import url('https://fonts.googleapis.com/css?family=Aleo:300,400,700');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Styles
+@import 'generic.reset';
+@import 'generic.base';
+@import 'helpers';
+@import 'module.wrapper';
+@import 'module.header';
+@import 'module.logo';
+@import 'module.nav';
+@import 'module.dropdown';
+@import 'module.section';
+@import 'module.footer';
+@import 'module.links';
+@import 'module.btn';
+@import 'module.form';
+@import 'module.wizard';
+@import 'module.modalbox';
+@import 'module.tablegrid';
+@import 'module.colorpicker';
+@import 'module.pagination';
+@import 'module.editor';
+@import 'module.donor';
+@import 'module.swal';
+@import 'module.toastr';
+@import 'module.homepage';
+@import 'module.autocomplete';
+
+
+@import "vue-select/src/scss/vue-select.scss";

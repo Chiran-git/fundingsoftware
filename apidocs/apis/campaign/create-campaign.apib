@@ -1,0 +1,28 @@
+## Create Campaign [/organization/{organization}/campaign]
+
++ Parameters
+
+    + organization: `123` (required, integer) - The organization ID
+
+### Add Campaign [POST]
+Create new campaign for the given organization
+
+:::note
+Controller Method: Api\Campaign\CampaignsController@store
+:::
+
++ Request (multipart/form-data)
+
+    + Body
+
+        name: `Gold Medal` (string, required) - Campign name
+        fundraising_goal: `100` (number, required) - Fundraising goal
+        end_date: `2019-8-01` (string, required) - Campaign end date
+        video_url: `http://youtub.com/salsa` (string, optional) - Video url
+        description: `Campign Description` (string, required) - Description
+        image: `image.jpg` (string, required) - Campign image file (multipart)
+
+
++ Response 200 (application/json)
+
+    + Attributes (CampaignDetail)

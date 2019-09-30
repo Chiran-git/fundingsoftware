@@ -1,0 +1,42 @@
+## Update Campaign [/organization/{organization}/campaign/{campaign}]
+
++ Parameters
+
+    + organization: `123` (required, integer) - The organization ID
+    + campaign: `1` (required, integer) - The campaign ID
+
+### Update Campaign [PUT]
+Update campaign for the given organization
+
+:::note
+Controller Method: Api\Campaign\CampaignsController@update
+:::
+
++ Request (multipart/form-data)
+
+    + Body
+
+        name: `Gold Medal` (string, required) - Campign name
+        fundraising_goal: `100` (number, required) - Fundraising goal
+        end_date: `2019-8-01` (string, required) - Campaign end date
+        video_url: `http://youtub.com/salsa` (string, optional) - Video url
+        description: `Campign Description` (string, required) - Description
+        image: `image.jpg` (string, required) - Campign image file (multipart)
+        donor_message: `text` (string) - Donor message
+        payout_method: `check` (string) - Possible value bank, check, null
+        payout_connected_id: `1` (number) - Requird if payout_method is bank
+        payout_name: `Kim` (string) - Payout name required if payout_method is check
+        payout_address1: `Ambar Apartment` (string) - Address required if payout_method is check
+        payout_address2: `Tilak Nagar` (string, optional) - Address
+        payout_city: `CA` (string) - Payout city name required if payout_method is check
+        payout_state: `CA` (string) - Payout state name  required if payout_method is check
+        payout_zipcode: `90210` (string) - Payout zipcode  required if payout_method is check
+        payout_country_id: `1` (number) - Payout country id required if payout_method is check
+        payout_payable_to: `John` (string) - Payout payable to  required if payout_method is check
+        payout_organization_name: `SSC High School` (string)  - Requird if payout_method is check
+        payout_schedule: `monthly` (string, required) - Posible values monthly, daily, completion
+
+
++ Response 200 (application/json)
+
+    + Attributes (CampaignDetail)

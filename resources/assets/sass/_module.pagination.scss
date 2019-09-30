@@ -1,0 +1,79 @@
+.page-item {
+    &:first-child {
+       .page-link {
+            border: none;
+       }
+    }
+    .page-link,
+    .page-link {
+        border: none;
+        font-size: 16px;
+        &:hover {
+            background-color: transparent;
+        }
+        &:focus {
+            box-shadow: none;
+        }
+    }
+    &.active .page-link {
+        z-index: 1;
+        color: $gray-2;
+        background-color: $grey-7;
+        border-color: $white;
+        font-weight: 600;
+    }
+    .pagination-prev-nav a,
+    .pagination-next-nav a {
+        font-size: 20px;
+        font-weight: 700;
+    }
+}
+
+.flatpickr-day {
+    color: black !important;
+    font-size: 16px !important;
+    &.today,
+    &.selected {
+        background: $primary;
+        color: $white !important;
+        border-radius: 8px;
+        border-color: white !important;
+    }
+    &:hover {
+        background: $primary !important;
+        color: $white !important;
+        border-radius: 8px;
+        border-color: white !important;
+    }
+}
+.flatpickr-weekday {
+    color: black !important;
+    font-size: 16px !important;
+}
+.flatpickr-current-month .flatpickr-monthDropdown-months,
+.flatpickr-current-month input.cur-year {
+    font-weight: 700 !important;
+    font-size: 17px !important;
+}
+.vue-daterange-picker {
+    display: flex !important;
+}
+.vue-daterange-picker {
+    .caret {
+        top: 50%;
+        position: absolute;
+        display: inline-block;
+        width: 0;
+        height: 0;
+        margin-left: 2px;
+        vertical-align: middle;
+        border-top: 4px solid;
+        border-right: 4px solid transparent;
+        border-left: 4px solid transparent;
+        color: #929292;
+        right: 5%;
+    }
+    .glyphicon.glyphicon-calendar {
+        display: none;
+    }
+}

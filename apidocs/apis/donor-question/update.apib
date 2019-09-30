@@ -1,0 +1,25 @@
+## Update Donor Question [/organization/{orgId}/donor-question/{dqId}]
+
++ Parameters
+
+    + orgId: `123` (required, integer) - The organization ID
+    + dqId: `12` (required, integer) - The donor question ID
+
+### Update Donor Question [PUT]
+Update donor questions for the given organization
+
+:::note
+Controller Method: Api\DonorQuestion\DonorQuestionsController@update
+:::
+
++ Request (application/json)
+
+    + Attributes
+
+        + question: `What is your age?` (string, required) - The question to ask to donor
+        + enabled: `true` (boolean, optional)
+	    + required: `true` (boolean, optional)
+
++ Response 200 (application/json)
+
+    + Attributes (DonorQuestion)

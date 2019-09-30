@@ -1,0 +1,930 @@
+/* ==========================================================================
+   Form container
+   ========================================================================== */
+
+.form-container {
+	position: relative;
+	z-index: 10;
+
+	h3 {
+		font-size: 25px;
+		font-weight: 800;
+		margin-bottom: 42px;
+	}
+
+	.form__actions {
+		font-size: 14px;
+		color: $gray-2;
+		a {
+			transition: color .4s;
+			&:hover {
+				color: $gray-3;
+				text-decoration: none;
+			}
+		}
+	}
+
+	.form__head {
+		padding-bottom: 38px;
+		padding-top: 30px;
+		text-align: center;
+
+		h4 {
+			font-size: 20px;
+			font-weight: 400;
+			color: $gray-3;
+
+			strong {
+				font-weight: 700;
+			}
+		}
+		p { color: $gray-3;
+			strong {
+				font-weight: 700;
+				color: $black;
+			}
+		}
+	}
+	.form__body {
+		padding: 0 30px;
+	}
+	.form__group + .form__group {
+		border-top: 1px solid #ddd;
+		margin-top: 48px;
+		padding-top: 46px;
+	}
+}
+.cardinput {
+    display: block;
+    width: 100%;
+    height: calc(1.6em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #495057;
+    background-color: #ffffff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.StripeElement {
+    box-sizing: border-box;
+    // height: 40px;
+	// padding: 10px 12px;
+	padding-top: 0.6rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    background-color: white;
+}
+/* ==========================================================================
+   Form fields wrapper
+   ========================================================================== */
+
+.form_wrapper {
+    .form-control,
+    textarea,
+	select,
+	input[type = tel],
+    input[type = password],
+    input[type = number],
+	input[type = email],
+	input[type = text] {
+		font-size: 16px;
+		font-weight: 400;
+		border-radius: 4px;
+		border: 1px solid $gainsboro;
+		width: 100%;
+		color: $black;
+		background: none;
+		padding: 0 12px;
+		height: 40px;
+		webkit-box-shadow: 0 1px 2px $whitesmoke;
+        box-shadow: 0 1px 2px $whitesmoke;
+        -webkit-user-select: text;
+        -khtml-user-select: text;
+        -moz-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
+
+		&:hover,
+		&:focus {
+			background: transparent;
+			border-color: $cyan;
+		}
+	}
+	.form_body {
+		padding: 0 0px;
+	}
+	.fa {
+		font-size: 14px;
+		color: $white;
+    	margin: 0 3px 0 0;
+	}
+	&--shadow {
+		webkit-box-shadow: 2px 2px 8px rgba(14, 14, 14, 0.125);
+		box-shadow: 2px 2px 8px rgba(14, 14, 14, 0.125);
+	}
+	.fa-small {
+		font-size: 14px;
+	}
+	select {
+		appearance: none;
+	}
+	select::-ms-expand {
+		display: none;
+	}
+
+    textarea,
+    textarea.form-control {
+		height: 250px;
+		padding: 12px;
+	}
+    .form-control.is-invalid,
+    .form-control.invalid,
+	.form-control.is-invalid:hover,
+	.form-control.is-invalid:focus {
+		border-color: $primary;
+		select,
+		textarea,
+		input[type = tel],
+		input[type = password],
+		input[type = number],
+		input[type = email],
+		input[type = text] {
+			&:focus { border-color: $primary; box-shadow: none; }
+		}
+		~ .invalid-feedback {
+			font-size: 14px;
+		}
+	}
+
+    input.input__cale,
+    input.input__cale:hover,
+    input.input__cale:focus,
+    .flatpickr-mobile,
+    .flatpickr-mobile:hover,
+    .flatpickr-mobile:focus, {
+        background-image: url(../images/icons/cale.png);
+		background-position: 96% 45%;
+		background-size: 24px;
+		background-repeat: no-repeat;
+    }
+    .flatpickr-mobile:focus:after,
+    .flatpickr-mobile:focus:before { display: none; }
+    .flatpickr-current-month .flatpickr-monthDropdown-,
+    span.flatpickr-weekday {
+        font-weight: 700;
+        font-family: $font-family-sans-serif;
+        color: $black !important;
+    }
+    .flatpickr-day.today {
+        border-color: $primary!important;
+        background: $primary;
+    }
+    .flatpickr-day {
+        background: none;
+        border: 1px solid transparent;
+        border-radius: 10% !important;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        color: #393939;
+        cursor: pointer;
+        font-weight: 400;
+        width: 14.2857143%;
+        -webkit-flex-basis: 14.2857143%;
+        -ms-flex-preferred-size: 14.2857143%;
+        flex-basis: 14.2857143%;
+        max-width: 39px;
+        height: 39px;
+        line-height: 39px;
+        margin: 0;
+        display: inline-block;
+        position: relative;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        text-align: center;
+    }
+    .flatpickr-calendar {
+        width: 292.875px !important;
+    }
+	.field-checkbox {
+		width: 100%;
+	}
+
+	.field_checkbox {
+		.form-check {
+			display: block;
+			overflow: visible;
+			padding-left: 0;
+
+			&.d-selected {
+				label {
+					&:after {
+						border-color: $gainsboro;
+					}
+					&:before {
+						background: url(../images/icons/ico-check-1.png) no-repeat 0 0;
+						width: 20px;
+						height: 15px;
+						background-size: 100% 100%;
+						top: 10px;
+						left: 11px;
+						opacity: 1;
+						visibility: visible;
+						transition: opacity .4s, visibility .4s;
+					}
+				}
+			}
+
+			+ li {
+				margin: 26px 0 0;
+
+			}
+		}
+
+		input {
+			display: none;
+		}
+
+		label,
+		.form-check-label {
+			display: inline-block;
+			position: relative;
+			padding-left: 30px;
+			color: $gray-3;
+            font-size: 14px;
+            font-family: $font-family-sans-serif;
+			letter-spacing: 0.2px;
+			text-transform: capitalize;
+
+
+			&:after,
+			&:before {
+				content: '';
+				position: absolute;
+				top: 1px;
+				left: 0;
+			}
+
+			&:after {
+				border-radius: 10%;
+				width: 20px;
+				height: 20px;
+				border: 1px solid gainsboro;
+				transition: border-color 0.4s;
+			}
+
+			&:before {
+				background: url(../images/icons/ico-check-1.png) no-repeat 0 0;
+				width: 14px;
+				height: 10px;
+				background-size: 100% 100%;
+				top: 6px;
+				left: 3px;
+				opacity: 0;
+				visibility: hidden;
+				transition: opacity .4s, visibility .4s;
+			}
+		}
+
+		input:checked + label {
+			&:after {
+				border-color: $black;
+			}
+
+			&:before {
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+	}
+
+	.input_container_select {
+		position: relative;
+
+        &--sec {
+            &:after {
+                content: "";
+                position: absolute;
+                top: 2%;
+                right: 2px;
+                background: gainsboro url(/images/down.png?a3e128f…) no-repeat 8px 8px;
+                background-size: 55% 60%;
+                pointer-events: none;
+                width: 35px;
+                height: 38px;
+                // border-top-left-radius: 4px;
+                // border-bottom-left-radius: 4px;
+            }
+        }
+        .vs__search::placeholder,
+        .vs__dropdown-toggle,
+        .vs__dropdown-menu {
+            background: $white;
+            color: $black;
+            text-transform: inherit;
+            font-variant: inherit;
+            border: 2px solid $gainsboro;
+            padding: 0;
+        }
+        .vs--searchable .vs__dropdown-toggle {
+            cursor: pointer;
+        }
+        .vs--open .vs__dropdown-menu {
+            //for the ul open
+            li {
+                white-space: inherit;
+            }
+        }
+        .v-select .vs__dropdown-menu{padding:0;border-radius:0;overflow-x:hidden;padding-top:0!important}
+        .v-select .vs__dropdown-menu li {
+            padding: 10px;
+            >a {
+            padding:12px 12px 8px 12px;
+            font-size:18px;
+            margin-left:1px;
+            width:100%
+            }
+        }
+        .vs__search::placeholder {
+            height: 30px;
+            border: 0;
+        }
+        .vs__search,
+        .vs__selected {
+            margin-top: 0;
+        }
+        .vs__selected-options {
+            padding: 0;
+            height: 35px;
+            width: 250px;
+        }
+        .vs__actions {
+			position: absolute;
+			top: 0;
+			right: 0;
+			background: gainsboro url(/images/down.png?a3e128f…) no-repeat 8px 8px;
+			background-size: 55% 60%;
+			pointer-events: none;
+			width: 35px;
+			height: 37px;
+			border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+            .vs__open-indicator {
+                display: none;
+            }
+        }
+        .vs__clear {
+            display: none;
+        }
+		select {
+			border: 2px solid $gainsboro;
+			border-radius: 4px;
+			width: 100%;
+			font-size: 14px;
+			height: 40px;
+			padding: 0 8px;
+        }
+	}
+
+	.field_label {
+        font-weight: 700;
+        font-family: $font-family;
+		font-size: 14px;
+		letter-spacing: 0.2px;
+		text-transform: capitalize;
+		&--asterisk {
+			&::after {
+				content: '*';
+				padding: 0 .3rem;
+				color: $black;
+			}
+		}
+		&--none {
+			visibility: hidden;
+        }
+        span {
+            color: $gray-2;
+            font-weight: normal;
+            font-family: $font-family-sans-serif;
+            letter-spacing: 0;
+            font-style: italic;
+        }
+	}
+
+	.form_heading {
+		display: none;
+	}
+
+	.form_fields {
+		list-style: none;
+        // font-size: 0;
+        // overflow: hidden;
+        display: inline-block;
+
+		li.field {
+			width: 100%;
+			padding: 0 0px 30px;
+            vertical-align: top;
+            float: left;
+
+			&.size1,
+			&.size2,
+			&.size3,
+			&.size4,
+			&.size5 {
+                width: 100%;
+			}
+			.invalid-feedback {
+				font-size: 14px;
+				display: block;
+			}
+		}
+		.full-fields {
+			margin: 0;
+			width: 100%;
+			padding: 0 0px 30px;
+			display: inline-block;
+			.invalid-feedback {
+				font-size: 14px;
+				display: block;
+			}
+		}
+		.input-group {
+            > input[type=text] {
+			    width: 1%;
+            }
+            > .input-group-prepend > .input-group-text {
+                box-shadow: 0 1px 2px $whitesmoke;
+                color: $black;
+            }
+        }
+		&--def {
+			margin: 0 -7px;
+		}
+	}
+
+	.image-uploader {
+		position: relative;
+		border-radius: 0.25rem;
+		.image-uploader-control {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			max-width: 100%;
+			opacity: 0;
+			z-index: 99;
+			cursor: pointer !important;
+			width: 100%;
+    		height: auto;
+		}
+		img {
+			margin-left: -10px;
+        }
+        &--sec {
+            padding: 25px 50px 15px;
+            height: 150px;
+            width: 225px;
+            img {
+                width: 35px;
+            }
+        }
+	}
+
+	.form_footer {
+		position: relative;
+		padding: 0px;
+	}
+
+	input.button,
+	button.button {
+		border: none;
+		box-shadow: none;
+		text-shadow: none;
+		color: $white;
+		font-size: 14px;
+		font-weight: 700;
+		background: none;
+		border-radius: 0;
+		padding: 0;
+
+		&:hover {
+			background: none;
+		}
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	&--alt {
+		.field_label {
+			display: none;
+		}
+	}
+
+	&--def {
+		.field__title {
+			font-weight: 700;
+			font-family: $font-family;
+			font-size: 14px;
+			letter-spacing: 0.2px;
+		}
+		.field__container {
+			background: $whitesmoke-2;
+			padding: 1rem;
+			border-radius: 6px;
+        }
+        .form-control,
+        select,
+        textarea,
+        input[type = tel],
+        input[type = password],
+        input[type = number],
+        input[type = email],
+        input[type = text] {
+            background: $white;
+            &:hover,
+			&:focus {
+                background: $white;
+			}
+		}
+    }
+    &--primary-alt {
+        .field_label {
+            font-family: $font-family-sans-serif;
+            font-size: 16px;
+            letter-spacing: 0;
+            span {
+                font-style: normal;
+            }
+        }
+        .field_checkbox .form-check-label {
+            color: $black;
+        }
+    }
+
+    .field_radio {
+        position: relative;
+		input[type=radio] {
+			display: none;
+		}
+		label {
+			display: inline-block;
+			position: relative;
+			padding-left: 30px;
+			color: $black;
+            font-size: 16px;
+            font-family: $font-family-sans-serif;
+			font-weight: 400;
+			letter-spacing: 0.2px;
+            text-transform: capitalize;
+            -webkit-transition: all 0.25s linear;
+            z-index: 9;
+		}
+        .check {
+            display: block;
+            position: absolute;
+            border: 1px solid $gray-2;
+            border-radius: 100%;
+            height: 20px;
+            width: 20px;
+            top: 2px;
+            left: 2px;
+            z-index: 5;
+            transition: border .25s linear;
+            -webkit-transition: border .25s linear;
+            &::before {
+                display: block;
+                position: absolute;
+                content: '';
+                border-radius: 100%;
+                height: 14px;
+                width: 14px;
+                top: 2px;
+                left: 2px;
+                margin: auto;
+                transition: background 0.25s linear;
+                -webkit-transition: background 0.25s linear;
+            }
+        }
+		input[type=radio]:checked ~ .check {
+            border: 1px solid $gray-2;
+            &::before {
+                background: $gray-2;
+            }
+        }
+        &--tab {
+            label {
+                text-transform: none;
+            }
+            .tab__content {
+                flex-grow: 1;
+                width: 100%;
+                display: none;
+                padding: 1rem;
+                background:$whitesmoke-2;
+                margin-left: 25px;
+                border-radius: 4px;
+                font-size: 14px;
+            }
+            input[type="radio"]:checked ~ .tab__content {
+                display: block;
+            }
+        }
+        &--disabled {
+            label {
+                color: $gray-4;
+            }
+            input[type=radio]:checked ~ .check {
+                border: 1px solid $grey-light;
+                &::before {
+                    background: $grey-light;
+                }
+            }
+        }
+	}
+}
+
+.progressbar-container {
+    .progress-bar {
+        color: white;
+        background-color: #fc313b;
+        border-radius: 50rem;
+    }
+	font-size: 18px;
+    span {
+        color: #fc313b;
+    }
+    .progress {
+        justify-content: space-between;
+        position: relative;
+    }
+    .ref {
+        font-size: 24px;
+        line-height: 22px;
+        position: absolute;
+        top: 0;
+        right: -40px;
+		width: 10%;
+		font-family: $font-family;
+		font-weight: 300;
+    }
+    .percent { font-size: 23px; }
+    .amt { color: $amt; }
+    .days { color: $days; }
+    .sub__text { color: $gray-6;}
+    &--medium {
+        .progress {
+            height: 1.25rem;
+        }
+        .ref {
+            top: 25px;
+            left: 0;
+            right: inherit;
+            color: $blue-grey;
+            padding-left: 0.5rem;
+            .percent {
+                color: $blue-light-grey;
+            }
+        }
+    }
+    &--thick {
+        .progress {
+            height: 1.5rem;
+		}
+		.ref {
+            top: 100%;
+            left: 0;
+			font-weight: 400;
+			font-family: $font-family-sans-serif;
+			line-height: 26px;
+			font-size: 24px;
+		}
+		.percent {
+			font-size: 24px;
+        }
+        .amt { color: $black; }
+        .days { color: $black; }
+    }
+    &--white {
+        .progress {
+            height: 1.5rem;
+            background: $white;
+		}
+		.ref {
+            right: -45px;
+			font-weight: 400;
+			font-family: $font-family-sans-serif;
+			line-height: 26px;
+			font-size: 18px !important;
+		}
+		.percent {
+			font-size: 18px;
+        }
+        .amt { color: $black; }
+        .days, .sub__text { display: none; }
+    }
+    &--grey {
+        color: $gray-4;
+    }
+}
+.vue-daterange-picker > .reportrange-text {
+    font-size: 12px;
+    line-height: 2;
+}
+
+@media (min-width: 576px) {
+    .form--filters {
+        .form_fields li.field.size1 {
+            width: 45%;
+        }
+    }
+    .progressbar-container--medium {
+        .ref {
+            right: -35px;
+            left: inherit;
+            top: 1px;
+            &.camlist {
+                margin-top: -3px;
+                right: -45px;
+            }
+        }
+    }
+    .progressbar-container--thick {
+        .ref {
+            font-size: 24px !important;
+            left: inherit;
+            right: -12%;
+            top: 7%;
+        }
+    }
+    .progressbar-container--white {
+        .ref {
+            right: -60px;
+        }
+    }
+}
+@media (min-width: 992px) {
+	.form-container {
+		.form__body {
+			padding: 0 60px;
+		}
+		&--small {
+			width: 55%;
+		}
+		&--medium {
+			width: 85%;
+		}
+		.pb-lg-6 {
+			padding-bottom: 1.875rem !important;
+		}
+	}
+
+	.form_wrapper {
+		.form_body {
+			padding: 0 30px;
+		}
+		.form_fields {
+			li.field {
+				margin: 0;
+				width: 50%;
+				padding: 0 7px 30px;
+				display: inline-block;
+
+				&.size1 {
+					width: 50%;
+				}
+
+				&.size2 {
+					width: 100%;
+				}
+
+				&.size3 {
+					width: 33.33%;
+				}
+
+				&.size4 {
+					width: 25%;
+				}
+
+				&.size5 {
+					width: 15%;
+				}
+
+				.is-invalid {
+					border-color: #dc3545;
+				}
+				small {
+					font-size: 12px;
+				}
+			}
+			.full-fields {
+				padding-right: 7px;
+				padding-left: 7px;
+
+				.size1 {
+					width: 100%;
+				}
+
+				.size2 {
+					width: 50%;
+				}
+
+				.size3 {
+					width: 33.33%;
+				}
+
+				.size4 {
+					width: 25%;
+				}
+
+				.size5 {
+					width: 15%;
+				}
+
+				.is-invalid {
+					border-color: #dc3545;
+				}
+			}
+		}
+		.form_footer {
+			padding: 0 37px;
+        }
+        &--def {
+            .form_footer {
+                padding: 0 7px;
+            }
+        }
+	}
+}
+
+@media (min-width: 1200px) {
+    .progressbar-container {
+        &--medium {
+           .ref {
+               right: -50px;
+               top: 0px;
+               &.camlist {
+                    margin-top: -1px;
+                    right: -50px;
+                }
+           }
+        }
+        &--thick {
+            .ref,
+            .percent {
+                font-size: 24px !important;
+            }
+        }
+    }
+    .vue-daterange-picker > .reportrange-text {
+        font-size: 15px;
+        line-height: 2;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .progressbar-container {
+        .progress,
+        .w-85 {
+            width: 100% !important;
+        }
+        .f-34,
+        .percent {
+            font-size: 18px !important;
+            font-weight: 400 !important;
+        }
+        &--thick {
+            .f-16 {
+                margin-top: 20px;
+            }
+        }
+    }
+    .link-inline .list-inline-item.btn--more {
+        vertical-align: top;
+    }
+}
+// Calendar CSS
+.flatpickr-calendar,
+.flatpickr-rContainer {
+	width: 293px !important;
+	@media screen and (max-width: 350px) {
+		width: 290px !important;
+	}
+}
+.dayContainer {
+	width: 293px !important;
+    min-width: 293px !important;
+	max-width: 293px !important;
+	@media screen and (max-width: 350px) {
+		width: 290px !important;
+		min-width: 290px !important;
+		max-width: 290px !important;
+	}
+}
+

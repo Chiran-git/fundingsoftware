@@ -1,0 +1,44 @@
+/* ------------------------------------------------------------ *\
+	Logo
+\* ------------------------------------------------------------ */
+
+.logo {
+	display: inline-block;
+	background: url(../images/logo.png) no-repeat 0 0;
+	width: 100px;
+	height: 40px;
+	background-size: 100% 100%;
+}
+
+.donor-logo {
+	display: inline-block;
+	background: url(../images/rocketjar-logo.png) no-repeat 0 0;
+	width: 144px;
+	height: 29px;
+	background-size: 100% 100%;
+}
+
+.logo--white {
+	display: inline-block;
+	background: url(../images/logo.png) no-repeat 0 0;
+	width: 80px;
+	height: 40px;
+	background-size: 100% 100%;
+}
+.logo-sp {
+	display: inline-block;
+	width: 60px;
+	height: 39px;
+	object-fit: contain;
+}
+
+.logo-secondary {
+	display: inline-block;
+	width: 80px;
+	height: 40px;
+}
+
+.org-logo {
+	width: 45px;
+	height: 45px;
+}

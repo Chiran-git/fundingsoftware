@@ -1,0 +1,36 @@
+.autocomplete {
+    .autocomplete__icon {
+        display: none;
+    }
+    .autocomplete__searching {
+        border-radius: none;
+    }
+    .autocomplete__box {
+        background: transparent;
+        border: 0px solid #ccc;
+        border-radius: 0px;
+        padding: 0;
+    }
+    .autocomplete__inputs {
+        padding: 0;
+    }
+    .autocomplete__results {
+        border-radius: 5px;
+        &__item {
+            padding: 10px 16px;
+            text-align: left;
+            strong {
+                display: block;
+                margin: 0 0 -6px 0;
+                font-size: 20px;
+            }
+            span {
+                color: #414040;
+                font-size: 12px;
+            }
+            &:hover {
+                background: rgba(48, 53, 54, 0.075);
+            }
+        }
+    }
+}

@@ -1,0 +1,29 @@
+---
+files:
+  -
+    destination: /var/www/html
+    source: /
+os: linux
+permissions:
+  -
+    group: www-data
+    mode: 665
+    object: /var/www/html/
+    owner: www-data
+    pattern: "**"
+    type:
+      - file
+  -
+    group: www-data
+    mode: 755
+    object: /var/www/html
+    owner: www-data
+    pattern: "**"
+    type:
+      - directory
+hooks:
+  BeforeInstall:
+    - location: scripts/BeforeInstall.sh
+  AfterInstall:
+    - location: scripts/AfterInstall.sh
+version: 0.0

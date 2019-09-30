@@ -1,0 +1,85 @@
+.dropdown {
+    .dropdown-menu {
+        font-family: $font-family;
+        background-color: $primary;
+        border: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        .dropdown-item {
+            color: $white;
+            font-weight: 700;
+            padding: 0.8rem 1rem .8rem;
+            text-transform: capitalize;
+            &:hover,
+            &:focus {
+                background: $primary-brlight;
+            }
+        }
+    }
+    .dropdown-toggle {
+        &::after,
+        .account-user-avatar::after {
+            display: inline-block;
+            content: "";
+            border-top: .2em solid transparent;
+            border-bottom: .2em solid transparent;
+            border-left: 0.4em solid;
+            margin-left: calc(100% - 76%);
+            vertical-align: middle;
+        }
+        .account-user-avatar::after {
+            vertical-align: baseline;
+        }
+        &.nav-user::after {
+            display: none;
+        }
+    }
+    &.show {
+        a {
+            color: $primary-dlight;
+        }
+        .dropdown-toggle::after,
+        .account-user-avatar::after {
+            color: $primary-dlight;
+            border-top: .4em solid;
+            border-right: 0.2em solid transparent;
+            border-bottom: 0;
+            border-left: 0.2em solid transparent;
+            vertical-align: middle;
+            margin-left: calc(100% - 76%);
+        }
+        .account-user-avatar::after {
+            vertical-align: baseline;
+        }
+    }
+}
+@media (min-width: 768px) {
+	.dropdown {
+        .dropdown-menu {
+            font-family: $font-family-sans-serif;
+            border-radius: 8px;
+            -webkit-box-shadow: 0px 2px 4px 0px rgba(0,0,0,50%);
+            -moz-box-shadow: 0px 2px 4px 0px rgba(0,0,0,50%);
+            box-shadow: 0px 2px 4px 0px rgba(0,0,0,50%);
+            .dropdown-item {
+                &:hover,
+                &:focus {
+                    border-radius: 8px;
+                }
+            }
+        }
+        &.show {
+            a {
+                color: $white;
+            }
+            .dropdown-toggle::after,
+            .account-user-avatar::after {
+                color: $white;
+            }
+        }
+        + .dropdown {
+            margin-left: 16px;
+        }
+    }
+}

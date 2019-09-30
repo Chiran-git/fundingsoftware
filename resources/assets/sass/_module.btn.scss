@@ -1,0 +1,469 @@
+/* ------------------------------------------------------------ *\
+	Button
+\* ------------------------------------------------------------ */
+
+.btn {
+	display: inline-block;
+	font-size: 16px;
+	font-weight: 700;
+	font-family: $font-family;
+    //padding: 8px 33px;
+	padding: 7px 25px;
+	background: $primary;
+	text-transform: capitalize;
+	color: $white;
+	border-radius: 4px;
+	min-width: 118px;
+	transition: color .4s, background .4s, border-color .4s;
+    box-shadow: none;
+
+	&:hover {
+		background: $primary-light;
+		color: $white;
+	}
+	&:focus {
+		box-shadow: none;
+		color: $white;
+	}
+
+	&--outline,
+	&--transparent {
+		border-width: 2px;
+		color: $primary;
+		border-color: $primary;
+		background: $white;
+		&:hover,
+		&:focus {
+			background: $white;
+			color: $primary;
+		}
+	}
+
+	&--transparent,
+    &--transparent:hover,
+    &--transparent:focus {
+		background: transparent;
+	}
+
+	&--light {
+		background: $white;
+		color: $primary;
+		&:hover,
+		&:focus {
+			background: $white;
+			color: $primary;
+		}
+	}
+
+	&--is-loading {
+		color: transparent;
+		&:after {
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-top: -.6875rem;
+			margin-left: -.6875rem;
+			width: 1.375rem;
+			height: 1.375rem;
+			border-radius: 50%;
+			border: 2px solid hsla(0,0%,100%,.2);
+			border-top-color: hsla(0,0%,100%,.8);
+			-webkit-animation: spin 1s linear infinite;
+			animation: spin 1s linear infinite;
+		}
+	}
+
+	&--none {
+		background: $white;
+		color: $white;
+		&:hover,
+		&:focus {
+			background: $white;
+			color: $white;
+		}
+	}
+
+	&--redoutline {
+		border-width: 2px;
+		color: $white;
+		border-color: $white;
+		background: $primary;
+		&:hover,
+		&:focus {
+			background: $primary;
+			color: $white;
+		}
+    }
+
+    &--lightborder {
+        border-width: 1px;
+        font-size: 12px;
+        &--ft {
+            font-size: 13px;
+        }
+    }
+
+    &--thinborder {
+        border-width: 1.2px;
+    }
+
+    &--xs-rounded {
+        background: $whitesmoke-2;
+        padding: 2px;
+        color: $gray-2;
+        min-width: 35px;
+        margin: 0 0 0px 11px;
+        &:hover,
+		&:focus {
+			background:  $whitesmoke-2;
+			color: $gray-2;
+        }
+    }
+
+	&--small {
+		font-size: 14px;
+	}
+
+	&--size1 {
+		min-width: 258px;
+	}
+
+	&--size2 {
+		min-width: 129px;
+	}
+
+	&--size3 {
+		min-width: 180px;
+	}
+
+	&--size4 {
+		min-width: 144px;
+	}
+
+	&--size5 {
+		min-width: 164px;
+	}
+
+	&--size6 {
+		min-width: 200px;
+	}
+
+	&--size7 {
+		min-width: 250px;
+	}
+
+	&--size8 {
+		min-width: 280px;
+	}
+
+	&--size9 {
+		width: 165px;
+		padding: 8px 8px;
+		font-size: 14px;
+	}
+
+	&--size10 {
+		padding: 18px 44px;
+	}
+
+	&--size11 {
+		min-width: 191px;
+	}
+
+	&--size12 {
+		min-width: 170px;
+	}
+
+	&--size13 {
+		min-width: 136px;
+	}
+
+	&--size14 {
+		width: 215px;
+	}
+
+	&--size15 {
+		padding: 10px 25px;
+	}
+
+	&--size16 {
+		width: 175px;
+		padding: 10px 8px;
+	}
+
+	&--m-w-auto {
+		min-width: auto;
+    }
+
+    &--py {
+		padding: 10px;
+	}
+
+	&--red {
+		background-color: $primary !important;
+		&:hover {
+			background-color: $primary;
+		}
+	}
+}
+@-moz-document url-prefix() {
+    .ani-loader {
+        svg {
+            margin-top: 8px;
+        }
+    }
+}
+/* ------------------------------------------------------------ *\
+	Button Press
+\* ------------------------------------------------------------ */
+.btn-threed {
+	background: $limegreen;
+    -webkit-box-shadow: 0px 14px 6px -1px $limegreen-dark; /* shadow */
+    -webkit-transition: -webkit-box-shadow .1s ease-in-out;
+	box-shadow: 0px 3px 0px $limegreen-dark;
+	padding: 0;
+	color: $white;
+	border-radius: 5px;
+
+	&:active {
+		// -webkit-box-shadow:
+		// 	0px 10px 2px 0px $limegreen-dark; /* shadow */
+		// 	span {
+		// 		-webkit-transform: translate(0, 5px); /* depth of button press */
+		// 	}
+	}
+
+	span {
+		background-color: $limegreen;
+		border-radius: 5px;
+		-webkit-transition: -webkit-transform .1s ease-in-out;
+		text-shadow: 0px 1px 2px $black;
+		display: inline-block;
+		padding: 5px 20px;
+		color: $white;
+		text-transform: uppercase;
+		font-weight: 700;
+		font-size: 14px;
+	}
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	.btn-threed {
+		span {
+			&:after {
+				background: none;
+				color: #90eeab;
+			}
+		}
+	}
+}
+
+/* ------------------------------------------------------------ *\
+	Button Burger
+\* ------------------------------------------------------------ */
+
+.btn-burger {
+	position: absolute;
+	top: 50%;
+	right: 4px;
+	display: none;
+	width: 22px;
+	height: 39px;
+	z-index: 7;
+	transform: translateY(-50%);
+
+	&:after,
+	&:before {
+		position: absolute;
+		content: '';
+		background: #fff;
+		height: 2px;
+		left: 50%;
+		width: 100%;
+		max-width: 20px;
+		transition: background .5s, transform .5s, top .5s;
+		transform-origin: 50% 50%;
+		margin-left: -10px;
+	}
+
+	&:after {
+		top: 19px;
+	}
+
+	&:before {
+		top: 12px;
+	}
+
+	&.active {
+		&:before {
+			background: #58595b;
+			transform: rotate(45deg);
+			top: 15px;
+		}
+
+		&:after {
+			background: #58595b;
+			transform: rotate(-45deg);
+			top: 15px;
+		}
+	}
+}
+
+/* Image upload */
+.btn-file {
+    display: inline-block;
+    border: 2px solid $whitesmoke;
+    border-radius: 8px;
+    background: $whitesmoke;
+    position: relative;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    -webkit-transition: opacity .4s;
+	transition: opacity .4s;
+	align-items: center;
+    justify-content: center;
+    display: flex;
+	flex-direction: column;
+	color: $gray-4;
+
+	&--big {
+		width: auto;
+		height: 405px;
+    }
+    &--big-org {
+		width: auto;
+        //height: 305px;
+        height: 132px;
+	}
+	&--small {
+		width: 100px;
+		height: 100px;
+    }
+    &--medium {
+		width: 150px;
+		height: 150px;
+	}
+}
+
+@media (min-width: 992px) {
+	.btn-file {
+		&--big {
+			width: 600px;
+		}
+    }
+    .form-edit {
+        .btn-file {
+            &--big-org--edt {
+                height: 175px;
+            }
+        }
+    }
+}
+
+.cross,
+.cross:hover { color: $primary; }
+
+.btn-twitter,
+.btn-twitter:active, .btn-twitter:hover {
+	background: #50abf1;
+	padding: 5px;
+}
+.btn i {
+	font-size: 13px;
+	vertical-align: middle;
+}
+.btn-twitter:link, .btn-twitter:visited,
+.btn-share:link, .btn-share:visited {
+	color: #fff;
+}
+
+.btn-share:active, .btn-share:hover,
+.btn-email:active, .btn-email:hover {
+	background: #60afc6;
+	color: #fff;
+}
+.btn-share,
+.btn-email {
+	background: #60afc6;
+}
+.btn-facebook {
+    background: #39559f;
+    padding: 0;
+    border-radius: 50rem;
+    &:hover {
+        background: #39559f;
+        border: 1px solid #39559f;
+    }
+    &:active {
+        background: #39559f;
+        border: 1px solid #39559f;
+    }
+}
+.fb_iframe_widget span {
+    width: 84px !important;
+    ._2tga._3e2a {
+        font-size: 13px;
+        height: 28px;
+        padding: 0 4px 0 6px;
+        border-radius: 50rem !important;
+    }
+    ._2tga:hover {
+        .btn-facebook {
+            background: #365899;
+            border: 1px solid #365899;
+        }
+    }
+}
+.btn--more {
+    &.dropleft{
+        .dropdown-toggle {
+            background: $whitesmoke-2;
+            border-color: $whitesmoke-2;
+            &::before {
+                display: none;
+            }
+        }
+        .dropdown-menu {
+            font-family: "Assistant", sans-serif;
+            border-radius: 8px;
+            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+            background-color:$primary;
+            border: none;
+            padding: 2px;
+            .dropdown-item {
+                color: $white;
+                font-weight: 700;
+                text-transform: capitalize;
+                &:hover,
+                &:focus {
+                    background-color:$primary;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 575.98px) {
+    /* Donor pages */
+    .btn-twitter,
+    .btn-share,
+    .btn-facebook {
+        min-width: 90px;
+    }
+    .preview--html {
+        .btn-twitter,
+        .btn-share,
+        .btn-facebook {
+            min-width: 100px;
+        }
+    }
+    .btn-full-m {
+        width: 100%;
+    }
+    .btn-file {
+        &--big-org {
+            height: 75px;
+        }
+    }
+}

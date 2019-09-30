@@ -1,0 +1,27 @@
+## Create Invitation [/organization/{orgId}/invite]
+
++ Parameters
+
+    + organization: `123` (required, integer) - The organization ID
+
+### Create Invitation [POST]
+Create invitation for adding new user in Organization
+
+:::note
+Controller Method: Api\Organization\InvitationsController@store
+:::
+
++ Request (application/json)
+
+    + Attributes
+
+        + first_name: `John` (string, required) - First name of the user
+        + last_name: `Doe` (string, required) - Last name of the user
+        + email: `john.doe@example.com` (string, required)
+        + role: `campaign-admin` (string, required) - Role of the user
+        + campaign_ids: `1`,`12` (array, optional) - campaign ids to assign
+
++ Response 200 (application/json)
+
+    + Attributes (Invitation)
+

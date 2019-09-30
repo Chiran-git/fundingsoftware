@@ -1,0 +1,17 @@
+## Get Campaign Admins [/organization/{organization}/campaign/{campaign}/campaign-admins]
+
++ Parameters
+
+    + organization: `2` (required, integer) - The organization ID
+    + campaign : `1` (required, integer) - The campaign ID
+
+### Get Campaign Admins [GET]
+Get the campaign admins for given campaign
+
+:::note
+Campaign\AdminsController@show
+:::
+
++ Response 200 (application/json)
+
+    + Attributes (OrganizationAdminList)

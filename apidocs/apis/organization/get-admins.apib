@@ -1,0 +1,16 @@
+## Get Organization [/organization/{id}/get-admins]
+
++ Parameters
+
+    + id: `123` (required, integer) - The organization ID
+
+### Get Organization Admins [GET]
+Get owner and admins for the given organization
+
+:::note
+Controller Method: Api\Organization\AdminsController@index
+:::
+
++ Response 200 (application/json)
+
+    + Attributes (array[OrganizationAdminList])

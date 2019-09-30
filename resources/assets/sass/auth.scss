@@ -1,0 +1,84 @@
+// Variables
+@import 'app';
+
+html,
+body {
+  height: 100%;
+}
+
+/* Extra markup and styles for table-esque vertical and horizontal centering */
+.site-wrapper {
+    display: table;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    padding: 0 0 50px;
+    input[type = password],
+    input[type = email],
+    input[type = text] {
+      height: 46px;
+    }
+  }
+  .site-wrapper-inner {
+    display: table-cell;
+    vertical-align: top;
+    position:relative;
+  }
+
+  /* Padding for spacing */
+  .inner {
+    padding: 30px;
+  }
+
+  /* IMAGE BACKGROUND */
+  .image-background-default-image {
+    background:url(../images/login-cover-n.jpg);
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-size:cover;
+    width:100%;
+    height:100%;
+    background-attachment: fixed;
+  }
+
+  /*
+   * Cover
+   */
+
+  .site-wrapper-inner .footer {
+    background: transparent;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    .logo-secondary {
+      display: none;
+    }
+    a {
+      font-weight: 700;
+    }
+  }
+
+.form--reset {
+    .hideShowPassword-toggle.hideShowPassword-toggle-show,
+    .hideShowPassword-toggle.hideShowPassword-toggle-hide {
+        top: 50% !important;
+        right: 8px !important;
+    }
+    .jq-password-validator__popover {
+        margin-top: 20px;
+        .jq-password-validator__rule {
+            display: block;
+        }
+    }
+    .invalid-feedback {
+        font-size: 14px;
+        display: block;
+    }
+}
+
+  @media (min-width: 768px) {
+    .site-wrapper-inner {
+      vertical-align: middle;
+    }
+  }

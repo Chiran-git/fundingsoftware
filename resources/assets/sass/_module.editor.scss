@@ -1,0 +1,102 @@
+.editor-toolbar {
+    border: none !important;
+    padding: 0 !important;
+
+    &:hover {
+        opacity: .6 !important;
+    }
+    a {
+        border: none !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+
+        &.fa-bold,
+        &.fa-italic,
+        &.fa-header,
+        &.fa-quote-left,
+        &.fa-link,
+        &.fa-list-ol,
+        &.fa-picture-o,
+        &.fa-list-ul,
+        &.fa-eye {
+            border-top: 1px solid $gray-2 !important;
+            border-bottom: 1px solid $gray-2 !important;
+        }
+        &.fa-bold,
+        &.fa-quote-left,
+        &.fa-link {
+            -webkit-border-radius: 4px 0 0px 4px !important;
+            border-radius: 4px 0 0px 4px !important;
+            border-left: 1px solid $gray-2 !important;
+        }
+        &.fa-header,
+        &.fa-list-ol,
+        &.fa-picture-o {
+            -webkit-border-radius: 0 4px 4px 0px !important;
+            border-radius: 0 4px 4px 0px !important;
+            border-right: 1px solid $gray-2 !important;
+        }
+        &.fa-italic,
+        &.fa-list-ul,
+        &.fa-eye {
+            border-left: 1px solid $gray-2 !important;
+            border-right: 1px solid $gray-2 !important;
+        }
+        &.fa-picture-o {
+            border-left: 1px solid $gray-2 !important;
+        }
+        &.fa-eye {
+            -webkit-border-radius: 4px !important;
+            border-radius: 4px !important;
+        }
+    }
+}
+.CodeMirror {
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 4px;
+    border: 1px solid $gainsboro;
+    width: 100%;
+    color: $black;
+    background: $white;
+    padding: 0 12px;
+    height: 400px !important;
+    webkit-box-shadow: 0 1px 2px $whitesmoke;
+    box-shadow: 0 1px 2px $whitesmoke;
+    &:hover,
+    &:focus {
+        background: $white;
+        border-color: $cyan;
+    }
+}
+.editor-preview.editor-preview-active ol,
+.editor-preview.editor-preview-active ul,
+.preview--html ul,
+.preview--html ol {
+    padding-left: 20px !important;
+}
+.editor-preview.editor-preview-active ul li p,
+.editor-preview.editor-preview-active ol li p,
+.preview--html p {
+    margin-bottom: 9px !important;
+}
+.editor-preview.editor-preview-active blockquote,
+.preview--html blockquote {
+    background: #f9f9f9 !important;
+    border-left: 10px solid #ccc !important;
+    margin: 1.5em 10px !important;
+    padding: 1em 10px .1em 10px !important;
+    quotes: "\201C""\201D""\2018""\2019" !important;
+}
+
+.preview--html ul, ol, dl, table, blockquote {
+    margin-bottom: 1.6em !important;
+}
+
+.preview--html blockquote {
+    margin: 0 !important;
+}
+
+.preview--html ul.share-campaign {
+    padding-left: 0 !important;
+}

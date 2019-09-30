@@ -1,0 +1,307 @@
+Table users {
+  id bigint [pk]
+  first_name varchar [not null]
+  last_name varchar [not null]
+  email varchar [unique]
+  email_verified_at timestamp [null]
+  password varchar
+  remember_token varchar [null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Ref: "users"."id" < "organizations"."owner_id"
+Ref: "users"."id" < campaigns.created_by_id
+Ref: "users"."id" < campaign_rewards.disabled_by_id
+Ref: "users"."id" < campaigns.disabled_by_id
+Ref: "users"."id" < campaigns.published_by_id
+Ref: "users"."id" < organization_connected_accounts.created_by_id
+Ref: "users"."id" < campaign_users.user_id
+Ref: "users"."id" < organization_users.user_id
+
+Table password_resets {
+  email varchar
+  token varchar
+  created_at timestamp [null]
+}
+
+Table organizations {
+  id bigint [pk]
+  owner_id bigint
+  name varchar [not null]
+  address1 varchar [null]
+  address2 varchar [null]
+  city varchar [null]
+  state varchar [null]
+  zipcode varchar [null]
+  country_id varchar [null]
+  phone varchar [null]
+  currency_id bigint
+  slug varchar
+  cover_image varchar [null]
+  cover_image_filename varchar
+  cover_image_filesize bigint
+  logo varchar [null]
+  logo_filename varchar
+  logo_filesize bigint
+  primary_color varchar
+  secondary_color varchar
+  appeal_headline varchar
+  appeal_message text
+  appeal_photo varchar
+  appeal_photo_filename varchar
+  appeal_photo_filesize bigint
+  system_donor_questions json [note: 'this have donor email, address, etc. and whether they are required or not']
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Ref: "organizations"."id" < "donor_questions"."organization_id"
+Ref: "organizations"."id" < "campaigns"."organization_id"
+Ref: "organizations"."id" < "organization_connected_accounts"."organization_id"
+Ref: organizations.id < donations.organization_id
+Ref: organizations.id < donation_rewards.organization_id
+Ref: organizations.id < payouts.organization_id
+Ref: organizations.id < organization_users.organization_id
+
+Table organization_users {
+    id bigint pk
+    organization_id bigint
+    user_id bigint
+    created_at timestamp
+    updated_at timestamp
+}
+
+Table donor_questions {
+  id bigint pk
+  organization_id bigint
+  question varchar
+  type varchar
+  options text
+  placeholder varchar
+  is_required boolean
+  sort_order integer
+  size varchar
+  disabled_at timestamp [null]
+  disabled_by_id bigint
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Ref: donor_questions.id < donation_question_answers.donor_question_id
+
+Table organization_connected_accounts {
+  id bigint pk
+  organization_id bigint
+  created_by_id bigint
+  is_default boolean [note: 'default 1']
+  nickname varchar
+  stripe_user_id varchar
+  stripe_access_token text
+  stripe_livemode boolean
+  stripe_refresh_token text
+  stripe_token_type varchar
+  stripe_publishable_key varchar
+  stripe_scope varchar
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Ref:organization_connected_accounts.id < campaigns.payout_connected_account_id
+Ref:organization_connected_accounts.id < payouts.organization_connected_account_id
+
+Table campaigns {
+  id bigint pk
+  organization_id bigint
+  created_by_id bigint
+  name varchar
+  slug varchar
+  fundraising_goal decimal
+  funds_raised decimal [null]
+  end_date timestamp
+  image varchar
+  image_filename varchar
+  image_filesize bigint
+  video_url varchar
+  description text [note: 'markdown in the frontend']
+  donor_message text
+  payout_method varchar [null, note: 'Either check or bank and can be left blank which is setup later']
+  payout_connected_account_id bigint [null]
+  payout_name varchar [null, note: 'Used to send checks']
+  payout_address1 varchar [null, note: 'Used to send checks']
+  payout_address2 varchar [null, note: 'Used to send checks']
+  payout_city varchar [null, note: 'Used to send checks']
+  payout_state varchar [null, note: 'Used to send checks']
+  payout_zipcode varchar [null, note: 'Used to send checks']
+  payout_country_id bigint [null, note: 'Used to send checks']
+  payout_payable_to varchar [null, note: 'Used to send checks']
+  payout_schedule varchar [note: 'monthly, daily, or complete']
+  sort_order integer
+  published_at timestamp
+  published_by_id bigint
+  disabled_at timestamp
+  disabled_by_id bigint
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Ref: campaigns.id < campaign_rewards.campaign_id
+Ref: campaigns.id < campaign_users.campaign_id
+Ref: campaigns.id < donations.campaign_id
+Ref: campaigns.id < donation_question_answers.campaign_id
+Ref: campaigns.id < donation_rewards.campaign_id
+Ref: campaigns.id < payouts.campaign_id
+
+Table campaign_users {
+  id bigint pk
+  organization_id bigint
+  campaign_id bigint
+  user_id bigint
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table campaign_rewards {
+  id bigint pk
+  organization_id bigint
+  campaign_id bigint
+  title varchar
+  description text
+  min_amount decimal
+  quantity integer
+  quantity_rewarded integer
+  image varchar
+  image_filename varchar
+  image_filesize bigint
+  disabled_at timestamp
+  disabled_by_id bigint
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Ref: campaign_rewards.id < donation_rewards.campaign_reward_id
+
+Table donors {
+  id bigint pk
+  first_name varchar
+  last_name varchar
+  email varchar
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Ref: donors.id < donations.donor_id
+
+Table donations {
+  id bigint pk
+  organization_id bigint
+  campaign_id bigint
+  donor_id bigint
+  currency_id bigint
+  gross_amount decimal
+  stripe_fee decimal [note: 'this will be total stripe fee which is 2.9% + $0.3']
+  application_fee decimal [note: 'this will be rocketjar fee']
+  net_amount decimal [note: '= gross - transaction - fixed']
+  stripe_customer_id varchar
+  stripe_charge_id varchar
+  stripe_payment_status varchar
+  card_name varchar
+  card_brand varchar
+  card_last_four varchar
+  payout_method varchar
+  payout_connected_account_id bigint [null]
+  mailing_address1 varchar
+  mailing_address2 varchar
+  mailing_city varchar
+  mailing_state varchar
+  mailing_zipcode varchar
+  mailing_country_id bigint
+  billing_address1 varchar
+  billing_address2 varchar
+  billing_city varchar
+  billing_state varchar
+  billing_zipcode varchar
+  billing_country_id bigint
+  comments text
+  payout_id bigint [null, note: 'populate after payout is done']
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Ref: donations.id < donation_question_answers.donation_id
+Ref: donations.id < donation_rewards.donation_id
+
+Table donation_question_answers {
+  id bigint pk
+  organization_id bigint
+  campaign_id bigint
+  donation_id bigint
+  donor_question_id bigint
+  answer text
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table donation_rewards {
+  id bigint pk
+  organization_id bigint
+  campaign_id bigint
+  donation_id bigint
+  campaign_reward_id bigint
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table payouts {
+  id bigint pk
+  organization_id bigint
+  campaign_id bigint
+  organization_connected_account_id bigint
+  payout_name varchar [null, note: 'Used to send checks']
+  payout_address1 varchar [null, note: 'Used to send checks']
+  payout_address2 varchar [null, note: 'Used to send checks']
+  payout_city varchar [null, note: 'Used to send checks']
+  payout_state varchar [null, note: 'Used to send checks']
+  payout_zipcode varchar [null, note: 'Used to send checks']
+  payout_country_id bigint [null, note: 'Used to send checks']
+  payout_payable_to varchar [null, note: 'Used to send checks']
+  issue_date timestamp
+  start_date timestamp
+  end_date timestamp
+  deposit_amount decimal
+  gross_amount decimal
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Table countries {
+  id bigint pk
+  name varchar [not null]
+  iso_code varchar [not null]
+  currency_id bigint
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Ref: "countries"."id" < "organizations"."country_id"
+Ref: countries.id < donations.mailing_country_id
+
+Table currencies {
+  id bigint pk
+  name varchar [not null]
+  iso_code varchar [not null]
+  symbol varchar [not null]
+  created_at timestamp [null]
+  updated_at timestamp [null]
+}
+
+Ref: "currencies"."id" < "organizations"."currency_id"
+Ref: "currencies"."id" < "countries"."currency_id"
+Ref: currencies.id < donations.currency_id
+
+
+
+
+
+
+

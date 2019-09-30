@@ -1,0 +1,103 @@
+/* ==========================================================================
+   a href links style
+   ========================================================================== */
+   .text-link {
+    color: $blue;
+    display: inline-block;
+    position: relative;
+    &:hover,
+    &:focus {
+        color: $cyan;
+        text-decoration: none;
+        &::after {
+            width: 100%;
+        }
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 50%;
+        width: 0;
+        height: 1px;
+        background: $cyan;
+        -webkit-transition: width .4s;
+        transition: width .4s;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
+    &--black {
+        color: $black;
+        &::after { display: none; }
+    }
+    &--grey {
+        color: $gray-5;
+        &:hover {
+            color: $gray-5;
+        }
+        &::after { display: none; }
+    }
+    &--red {
+        color: $primary;
+        &::after { display: none; }
+        &:hover,
+        &:focus {
+            color: $primary;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .link-inline {
+        .list-inline-item {
+            display: block;
+            &:last-child {
+                margin-right: 0.5rem;
+            }
+        }
+    }
+}
+
+// Social icons popup message
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  .popuptext {
+    visibility: hidden;
+    width: 260px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 0;
+    text-transform: none;
+    @media screen and (min-width: 600px) {
+        width: 360px;
+    }
+  }
+  .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1;}
+}

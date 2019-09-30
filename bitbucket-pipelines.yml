@@ -1,0 +1,14 @@
+ # image: node:7.5.0
+
+ pipelines:
+   branches:
+     master:
+       - step:
+         # set AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY and AWS_DEFAULT_REGION as environment variables
+           name: Deploy to AWS
+           deployment: production   # set to test, staging or production
+         # trigger: manual  # uncomment to have a manual step 
+           image: atlassian/pipelines-awscli
+           script:
+             - aws deploy push --application-name $APPLICATION_NAME --s3-location s3://$S3_BUCKET/$S3_KEY
+             - aws deploy create-deployment --application-name $APPLICATION_NAME --s3-location bucket=$S3_BUCKET,key=$S3_KEY,bundleType=zip --deployment-group-name $DEPLOYMENT_GROUP

@@ -1,0 +1,25 @@
+.toast-container> {
+    div {
+        opacity: 1 !important;
+        box-shadow: 0 0px 11px #999 !important;
+        -webkit-box-shadow: 0 0px 11px #999 !important;
+    }
+    :hover {
+        -webkit-box-shadow: 0 0px 11px #999 !important;
+        box-shadow: 0 0px 11px #999 !important;
+    }
+    .toast-success {
+        background-color:#19a974;
+    }
+    .toast-error {
+        background-color: #f50e01;
+        box-shadow: 0 0 12px #c7352c !important;
+    }
+    .toast-warning {
+        background-color: #f7bb2b;
+        border: none;
+    }
+    .toast-info {
+        background-color: #357edd;
+    }
+}

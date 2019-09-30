@@ -1,0 +1,26 @@
+## Update Organization System Donor Questions [/organization/{id}/system-donor-questions]
+
++ Parameters
+
+    + id: `123` (required, integer) - The organization ID
+
+### Update System Donor Questions [PUT]
+Updates the system donor questions of an organization
+
+:::note
+Controller Method: Api\Organization\SystemDonorQuestionsController@update
+:::
+
++ Request (application/json)
+
+    + Attributes
+
+        + mailing_address
+            + required: true (boolean, required) - Whether this question is required or not
+            + enabled: false (boolean, required) - Whether this field is enabled or not
+        + comment
+            + required: true (boolean, required) - Whether this question is required or not
+            + enabled: false (boolean, required) - Whether this field is enabled or not
+
+
++ Response 200 (application/json)

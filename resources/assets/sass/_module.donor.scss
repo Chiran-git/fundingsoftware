@@ -1,0 +1,235 @@
+/* ------------------------------------------------------------ *\
+	Donor
+\* ------------------------------------------------------------ */
+
+.donor-hero {
+
+	&-filter {
+        position: relative;
+        border-bottom: 2.3125rem;
+        border-style: solid;
+        border-top: none;
+        border-right: none;
+        border-left: none;
+		&__body {
+			margin: 50px 0px -50px;
+			background: $white;
+			z-index: 1;
+			box-shadow: 0 3px 7px 0 rgba(0,0,0,0.3);
+			position: relative;
+			@media screen and (min-width: 992px) {
+                height: 405px;
+                overflow: hidden;
+			}
+		}
+		&__image {
+			background-size: cover;
+			background-repeat: no-repeat;
+			height: 405px;
+		}
+	}
+	// &-filter:after, &-filter:before {
+	// 	position: absolute;
+	// 	left: 0;
+	// 	top: 0;
+	// 	width: 100%;
+	// 	height: 100%;
+	// 	display: block;
+	// 	content: "";
+	// }
+	// &-filter:after {
+	// 	background: #94104f;
+	// 	border-bottom: 2.3125rem solid #f8a737;
+	// }
+}
+
+.organizer {
+	padding: 50px 0;
+	border-top: 4px solid $whitesmoke;
+	border-bottom: 4px solid $whitesmoke;
+}
+
+.supporters {
+	margin-bottom: 20px;
+	font-size: 16px;
+	line-height: normal;
+
+	span,
+	.time {
+		color: $gray-2;
+	}
+
+	.time {
+		font-size: 14px;
+	}
+}
+
+.has-dollar {
+	position: relative;
+	width: 280px;
+
+	input {
+		width: 100% !important;
+		height: 44px;
+		padding-left: 30px;
+	}
+
+	span {
+		position: absolute;
+		display: block;
+		width: 30px;
+		height: 44px;
+		line-height: 44px;
+		text-align: center;
+		pointer-events: none;
+		left: 0;
+	}
+}
+
+.donor-reward-image {
+	@media screen and (min-width: 992px) {
+		top: -1.5rem;
+		right: -1.5rem;
+		position: relative;
+	}
+}
+
+.sup {
+	font-size: 18px;
+    top: -20px;
+	position: relative;
+	&--top {
+		top: -13px;
+	}
+}
+
+.donor-box {
+	background-color: $whitesmoke-1;
+	padding: 30px 20px;
+	border-radius: 5px;
+	border: 1px solid $bg-gray-1;
+	font-size: 16px;
+	@media screen and (min-width: 768px) {
+		padding-right: 30px;
+		padding-left: 30px;
+	}
+
+	label {
+		font-weight: bold;
+		margin-right: 20px;
+		min-width: 80px;
+	}
+}
+
+.donor-form {
+	padding: 40px 20px;
+	border: 1px solid $bg-gray-1;
+	border-radius: 5px;
+
+	@media screen and (min-width: 768px) {
+		padding-right: 60px;
+		padding-left: 60px;
+	}
+
+	.form-group {
+		margin-bottom: 2rem;
+	}
+
+	.asterisk,
+	label {
+		font-weight: 700;
+		font-family: $font-family;
+		font-size: 14px;
+		letter-spacing: 0.2px;
+		text-transform: capitalize;
+	}
+
+	.asterisk:after {
+		content: "*";
+		padding: 0 0.3rem;
+		color: #0e0e0e;
+	}
+
+	.optional {
+		color: #8A8989;
+	}
+
+	.credit-cards {
+		img {
+			max-width: 50px;
+			margin-top: 3px;
+			margin-right: 5px;
+
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+}
+
+.thanks-box {
+	padding: 60px 20px;
+	border: 1px solid $bg-gray-1;
+	border-radius: 5px;
+
+	.contribution-bg {
+		background-color: $whitesmoke-1;
+		padding: 30px 20px;
+		border-radius: 5px;
+		@media screen and (min-width: 768px) {
+			padding-right: 60px;
+			padding-left: 60px;
+		}
+	}
+
+	.info-text {
+		text-align: center;
+		font-size: 18px;
+	}
+}
+
+.donor-email {
+	&__body {
+		background-color: $whitesmoke-1;
+		padding: 20px 25px 50px;
+
+		&--modal {
+			max-height: 400px;
+			overflow-y: scroll;
+			border: 1px solid rgba(14, 14, 14, 0.1);
+			border-radius: 2px;
+			@media screen and (max-width: 767px) {
+				padding-right: 10px;
+				padding-left: 10px;
+			}
+		}
+	}
+
+	&__inner {
+		background-color: $white;
+		padding: 30px 20px 50px;
+		border-radius: 8px;
+		@media screen and (min-width: 768px) {
+			padding-right: 50px;
+			padding-left: 50px;
+		}
+
+		&--modal {
+			padding-right: 20px;
+			padding-left: 20px;
+			@media screen and (min-width: 992px) {
+				padding-right: 50px;
+				padding-left: 50px;
+			}
+		}
+	}
+}
+
+.adjust-amount {
+	line-height: normal;
+	position: relative;
+	left: -10px;
+	@media screen and (max-width: 575.98px) {
+		left: 0;
+	}
+}

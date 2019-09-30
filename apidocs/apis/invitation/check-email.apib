@@ -1,0 +1,22 @@
+## Check Email [/organization/{orgId}/check-email]
+
++ Parameters
+
+    + organization: `123` (required, integer) - The organization ID
+
+### Check Email [POST]
+Check email for adding new user in Organization
+
+:::note
+Controller Method: Api\Organization\InvitationsController@checkEmail
+:::
+
++ Request (application/json)
+
+    + Attributes
+
+        + email: `john.doe@example.com` (string, required)
+
++ Response 200 (application/json)
+
+    + Attributes (UserDetail)

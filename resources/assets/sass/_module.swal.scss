@@ -1,0 +1,92 @@
+.swal2-popup {
+    border-radius: 8px !important;
+    font-family: $font-family-sans-serif !important;
+}
+
+.swal2-title {
+    font-family: $font-family !important;
+}
+
+.swal2-content {
+    font-size: 16px !important;
+    font-weight: 400 !important;
+}
+
+.swal2-styled {
+    font-family: $font-family !important;
+    padding: .525em 2em !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    min-width: 120px !important;
+
+    &.swal2-confirm {
+      background: $primary !important;
+      border-radius: 50rem !important;
+    }
+
+    &.swal2-cancel {
+      border-radius: 50rem !important;
+      color: $primary !important;
+      border: 2px solid $primary !important;
+      background: $white !important;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: none !important;
+    }
+
+    &::-moz-focus-inner {
+      border: 0;
+      box-shadow: none !important;
+    }
+  }
+
+/* vue chart */
+.line-chart {
+    .vtc {
+      height: 250px;
+      font-size: 12px;
+      @media (min-width: 699px) {
+        /*height: 350px;*/
+      }
+      .label {
+        color: $gray-8;
+      }
+    }
+    .grid,
+    .labels {
+      line {
+        stroke: rgba($gray-8, 0.5);
+      }
+    }
+    .x-labels {
+      .label {
+        text {
+           display: none;
+        }
+        line {
+          opacity: 0.3;
+        }
+        &:nth-child(n + 2),
+        &:first-child {
+          text {
+            display: block;
+          }
+          line {
+            opacity: 1;
+          }
+        }
+      }
+    }
+    .curve-btc {
+      .stroke {
+        stroke: #ffffff;
+        stroke-width: 2;
+      }
+      .fill {
+        fill: url(#btcFill);
+        fill-opacity: 0.5;
+      }
+    }
+  }

@@ -1,0 +1,28 @@
+/* ------------------------------------------------------------ *\
+	Custom Chrome color picker -> https://codepen.io/Brownsugar/pen/NaGPKy
+\* ------------------------------------------------------------ */
+
+.color-picker {
+    h1 {
+        height: 120px;
+        line-height: 120px;
+        text-align: center;
+    }
+    .vc-chrome {
+        position: absolute;
+        top: 35px;
+        right: 0;
+        z-index: 9;
+    }
+    .current-color {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-color: #000;
+        cursor: pointer;
+    }
+    .footer {
+        margin-top: 20px;
+        text-align: center;
+    }
+}

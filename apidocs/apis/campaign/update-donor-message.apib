@@ -1,0 +1,22 @@
+## Update Donor Message [/organization/{organization}/campaign/{campaign}/donor-message]
+
++ Parameters
+
+    + organization: `123` (required, integer) - The organization ID
+    + campaign: `1` (required, integer) - The campaign ID
+
+### Update Donor Message [PUT]
+Update donor Message for the given organization campaign
+
+:::note
+Controller Method: Api\Campaign\UpdateDonorMessageController@update
+:::
+
++ Request (application/json)
+
+    + Attributes
+
+        + donor_message: `Thank you for donation!` (string, required) - Campaign donor message
+
++ Response 200 (application/json)
+

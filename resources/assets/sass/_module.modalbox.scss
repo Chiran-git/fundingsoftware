@@ -1,0 +1,107 @@
+.modal {
+    .modal-dialog {
+        .modal-content {
+            box-shadow: 0 0 20px 3px rgba(0,0,0,.22);
+        }
+        .modal-header,
+        .modal-footer {
+            justify-content: center;
+            border-bottom: 0;
+            border-top: 0;
+        }
+        .modal-body {
+            text-align: center;
+            font-family: $font-family-sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .modal-title {
+            font-family: $font-family;
+        }
+        .modal-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+        }
+    }
+    button.close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 0px 13px 5px;
+        font-size: 40px;
+        background: $primary;
+        color: $white;
+        line-height: 30px;
+        opacity: 1;
+        width: 48px;
+        height: 48px;
+    }
+    input {
+        box-shadow: none;
+    }
+}
+@media (min-width: 992px) {
+    .modal-cm-lg {
+        max-width: 700px;
+    }
+}
+
+.modal-share {
+    position: absolute;
+    right: 0px;
+    left: 0px;
+    max-width: 510px;
+    margin: 0 auto;
+    z-index: 9;
+    top: 20%;
+    display: none;
+    &.show {
+        display: block;
+    }
+}
+
+#campaign-info-preview .rotate-90,
+#donor-email-preview .rotate-90 {
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.close-share-popup {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0px 13px 5px;
+    line-height: 30px;
+    width: 48px;
+    height: 48px;
+    opacity: 1;
+    font-size: 40px;
+    background-color: $white !important;
+    color: inherit !important;
+}
+
+.modal-switch-organization {
+    max-width: 445px;
+    ul {
+        list-style: none;
+        max-height: 210px;
+        min-height: 210px;
+        width: 100%;
+        overflow-y: scroll;
+        li {
+            padding: 8px 10px;
+            border-bottom: 1px solid #dee2e6;
+            display: flex;
+            align-items: center;
+            &:last-child {
+                border-bottom: 0;
+            }
+            img {
+                width: 25px;
+                height: 25px;
+            }
+        }
+    }
+}

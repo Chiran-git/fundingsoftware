@@ -1,0 +1,26 @@
+## Update User [/user/{user}]
+
++ Parameters
+
+    + user: `1` (required, integer) - The user ID
+
+### Update User [POST]
+Update user
+
+:::note
+Controller Method: Api\UsersController@update
+:::
+
++ Request (multipart/form-data)
+
+    + Body
+
+        + first_name: `Donald` (string, required) - User first name
+        + last_name: `Denton` (string, required) - User last name
+        + email: `donald.denton@athertonhighschool.edu` (string, required) - User email
+        + job_title: `Principal` (string, required) - Job Title of User
+        + image: `image.jpg` (string, required) - User image file (multipart)
+
++ Response 200 (application/json)
+
+    + Attributes (User)

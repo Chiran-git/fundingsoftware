@@ -1,0 +1,26 @@
+## Accept Invitation [/organization/{orgId}/invitation/{code}]
+
++ Parameters
+
+    + organization: `123` (required, integer) - The organization ID
+    + code: `MUQAa1AaYR` (required, string) - Unique invitation code
+
+### Accept Invitation [POST]
+Accept invitation and create new user in Organization
+
+:::note
+Controller Method: Api\Organization\InvitationsController@update
+:::
+
++ Request (application/json)
+
+    + Attributes
+
+        + password: `Rg@123456` (string, required) - Required if user not present
+	    + password_confirmation: `Rg@123456` (string, required)
+
+
++ Response 200 (application/json)
+
+    + Attributes (User)
+

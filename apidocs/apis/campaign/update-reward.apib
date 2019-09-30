@@ -1,0 +1,28 @@
+## Update Campaign Reward [/organization/{organization}/campaign/{campaign}/reward/{rewId}]
+
++ Parameters
+
+    + organization: `123` (required, integer) - The organization ID
+    + campaign: `123` (required, integer) - The campaign ID
+    + rewId: `123` (required, integer) - The reward ID
+
+### Update Campaign Reward [POST]
+Update a given reward
+
+:::note
+Campaign\RewardsController@update
+:::
+
++ Request (multipart/form)
+
+    + Body
+    	_method: `PUT`
+        title: `Gold Medal` (string, required) - Reward name
+        description: `Reward Description` (string, required) - Description of the reward
+        min_amount: `100` (number, required) - Min amount required to get the reward
+        quantity: `5` (number, required)
+        image: `image.jpg` (string) - Reward image file (multipart)
+
++ Response 200 (application/json)
+
+    + Attributes (CampaignReward)

@@ -1,0 +1,29 @@
+## Update Organization Profile [/organization/{id}/profile]
+
++ Parameters
+
+    + id: `123` (required, integer) - The organization ID
+
+### Update Profile [PUT]
+Updates the Profile of an organization
+
+:::note
+Controller Method: Api\Organization\ProfileController@update
+:::
+
++ Request (application/json)
+
+    + Attributes
+
+        + name: `Awesome Organization` (string, required) - Organization's name
+        + address1: `Suite 52` (string, required) - Address line 1
+        + address2: `Street address` (string, optional) - Address line 2
+        + city: `Los Angeles` (string, required)
+        + state: `CA` (string, required)
+        + zipcode: `90210` (string, required)
+        + phone: `9876543210` (string)
+        + currency: `USD` (string, required)
+        + country: `US` (string, required)
+        + slug: `awesome-organization` (string, required) - Unique URL identifier
+
++ Response 200 (application/json)

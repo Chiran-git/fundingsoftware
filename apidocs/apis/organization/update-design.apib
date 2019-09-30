@@ -1,0 +1,27 @@
+## Update Organization Page Design [/organization/{id}/design]
+
++ Parameters
+
+    + id: `123` (required, integer) - The organization ID
+
+### Update Page Design [PUT]
+Updates the Page Design of an organization
+
+:::note
+Controller Method: Api\Organization\DesignController@update
+:::
+
++ Request (multipart/form-data)
+
+    + Body
+
+        cover_image: `cover_image.jpg` (string, required) - File upload
+        logo: `logo.jpg` (string, required) - File upload
+        primary_color: `FFF000` (string, required)
+        secondary_color: `FFDDEE` (string, required)
+        appeal_headline: `Please donate` (string, required) - Headline for the appeal to be shown on Org page
+        appeal_message: `Appeal Message` (string, required) - Descriptive message for the appeal to be shown on Org page
+        appeal_photo: `image.jpg` (string, required) - File upload
+
+
++ Response 200 (application/json)

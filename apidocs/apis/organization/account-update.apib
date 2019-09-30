@@ -1,0 +1,25 @@
+## Update Organization account [/organization/{organization}/connected-account/{organizationConnectedAccount}]
+
++ Parameters
+
+    + organization: `123` (required, integer) - The organization ID
+    + organizationConnectedAccount: `123` (required, integer) - The organization account ID
+
+### Account Update [PUT]
+Update an existing account coonected with the particular organization
+
+
+:::note
+Controller Method: Organization\ConnectedAccountsController@update
+:::
+
++ Request (application/json)
+
+    + Attributes
+
+        + nickname: `New Trust` (string, required) - Account Nickname
+        + is_default: `true` (boolean, required) - Status flag of the account
+
++ Response 200 (application/json)
+
+    + Attributes (ConnectedAccount)

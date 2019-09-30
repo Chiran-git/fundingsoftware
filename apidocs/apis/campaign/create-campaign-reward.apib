@@ -1,0 +1,27 @@
+## Create Campaign Reward [/organization/{organization}/campaign/{campaign}/reward]
+
++ Parameters
+
+    + organization: `123` (required, integer) - The organization ID
+    + campaign: `123` (required, integer) - The campaign ID
+
+### Add Campaign Reward [POST]
+Add/create a new reward for the given campaign
+
+:::note
+Controller Method: Api\Campaign\RewardsController@store
+:::
+
++ Request (multipart/form-data)
+
+    + Body
+
+        title: `Gold Medal` (string, required) - Reward name
+        description: `Reward Description` (string, required) - Description of the reward
+        min_amount: `100` (number, required) - Min amount required to get the reward
+        quantity: `5` (number, required)
+        image: `image.jpg` (string, required) - Reward image file (multipart)
+
++ Response 200 (application/json)
+
+    + Attributes (CampaignReward)

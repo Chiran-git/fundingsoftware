@@ -1,0 +1,16 @@
+## Get Account Users [/organization/{id}/account-users]
+
++ Parameters
+
+    + id: `123` (required, integer) - The organization ID
+
+### Get Account Users [GET]
+Get all the users for the given organization
+
+:::note
+Controller Method: Api\Organization\AdminsController@index
+:::
+
++ Response 200 (application/json)
+
+    + Attributes (array[OrganizationAdminList])

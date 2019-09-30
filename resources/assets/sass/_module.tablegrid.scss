@@ -1,0 +1,480 @@
+/*** simple grid ***/
+
+.grid.simple {
+    padding:0px !important;
+    .table {
+        thead th {
+            vertical-align: bottom;
+            border-top: 0px solid #dee2e6;
+        }
+        .td {
+            vertical-align: top;
+            padding: 10px 12px !important;
+        }
+        tr.disabled {
+            color: $gray-3;
+        }
+    }
+ }
+
+
+ .table-striped {
+        background-color: $white;
+    thead th {
+        border-top: 0px;
+        border-bottom: 1px solid $bg-gray-1;
+        font-family: $font-family;
+        color: $gray-5;
+        font-size: 14px;
+        padding-bottom: 0.1rem;
+    }
+    tbody {
+        th {
+        color: $black;
+        border-top: 0;
+            a {
+                color: $primary;
+            }
+        }
+        tr:nth-of-type(odd) {
+            background-color: $white;
+        }
+        tr:nth-of-type(even) {
+            background-color: $whitesmoke-2;
+        }
+    }
+    td, th {
+        border-top: 0px solid $white;
+        padding: 0.5rem;
+        color: $gray-2;
+        font-size: 16px;
+    }
+    &--dark-text {
+        th {
+            vertical-align: middle;
+        }
+        td {
+            color: $black;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            a {
+                color: $gray-7;
+            }
+        }
+    }
+    &--def {
+        thead th { background-color: transparent; }
+        tbody {
+            th {
+            color: $primary;
+            vertical-align: middle;
+            }
+        }
+        td {
+            color: $black;
+            vertical-align: middle;
+            a {
+                color: $gray-7;
+            }
+        }
+    }
+    &--trans {
+        th {
+            vertical-align: middle;
+        }
+        td {
+            color: $black;
+        }
+        tbody {
+            tr:nth-of-type(odd) {
+                background-color: transparent;
+            }
+            tr:nth-of-type(even) {
+                background-color: transparent;
+            }
+        }
+    }
+    &--alternate {
+        thead th { border-width: 0; }
+        tbody {
+            th {
+            color: $primary;
+            vertical-align: middle;
+            }
+            tr:nth-of-type(odd) {
+                background-color: $whitesmoke-2;
+            }
+            tr:nth-of-type(even) {
+                background-color: $white;
+            }
+        }
+        td {
+            color: $black;
+            vertical-align: middle;
+            .btn {
+                color: $primary;
+                min-width: 50px;
+                padding: 9px 20px;
+            }
+            &.text-grey-5 {
+                color: $gray-3;
+            }
+        }
+    }
+    &--center-text {
+        th:nth-child(4),
+        td:nth-child(4) {
+            text-align: center;
+        }
+    }
+ }
+
+ .table-gray {
+    thead th {
+        border-top: 0;
+        border-bottom: 0;
+        font-family: $font-family;
+        color: $gray-5;
+        font-size: 14px;
+        padding-bottom: 0.1rem;
+    }
+    tbody {
+        tr {
+            border-top: 5px solid $white;
+        }
+    }
+    td {
+        background-color: $whitesmoke-2;
+        border-top: 0;
+        padding: 0.5rem;
+        color: $black;
+        font-size: 16px;
+        vertical-align: middle;
+        &:first-child {
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+        &:last-child {
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            color: $gray-5;
+        }
+    }
+}
+
+ .full-width {
+    .table-striped--def {
+        background: $whitesmoke-2;
+    }
+ }
+ /* ------------------------------------------------------------ *\
+	List fixed header
+\* ------------------------------------------------------------ */
+.list-fixed-head,
+.list-fixed-head-js {
+    border-bottom: 1px solid $bg-gray-1;
+    font-size: 16px;
+    line-height: 1.14;
+    max-height: 551px;
+    overflow: hidden;
+
+    .head-fixed {
+        // margin-right: 30px;
+        ul li {
+            color: $gray-5;
+            font-family: $font-family;
+            height: 35px;
+        }
+    }
+    > li:first-child {
+        display: none;
+    }
+    .list--content {
+    	border-top: 1px solid $bg-gray-1;
+	    max-height: 457px;
+        overflow-x: hidden;
+        > li + li {
+            border-top: 1px solid $bg-gray-1;
+        }
+        &--dark {
+            background: $whitesmoke-1;
+            border: 1px solid $whitesmoke-1;
+            -webkit-box-shadow:inset 0 1px 5px 1px rgba(0,0,0,.1);
+            box-shadow:inset 0 1px 5px 1px rgba(0,0,0,.1);
+            overflow-y: scroll;
+            > li + li {
+                border-top: 1px solid $white;
+            }
+        }
+	}
+	ul {
+		list-style: none;
+        display: block;
+
+		li {
+			padding: 15px;
+			display: flex;
+			justify-content: flex-start;
+            align-items: center;
+
+            &:before {
+                content: attr(data-text);
+                display: block;
+                min-width: 45%;
+                font-weight: 700;
+                padding-right: 3px;
+            }
+
+  			&:nth-child(1) {
+				flex: 0 0 46%;
+			}
+			&:nth-child(2) {
+				flex: 0 0 12%;
+            }
+			&:nth-child(3) {
+				flex: 0 0 12%;
+			}
+			&:nth-child(4) {
+				flex: 0 0 12%;
+			}
+			&:nth-child(5) {
+				flex: 0 0 12%;
+			}
+			&:nth-child(6) {
+				flex: 0 0 6%;
+			}
+			a {
+				position: relative;
+                padding: 0 6px;
+                font-size: 18px;
+                color: $primary;
+            }
+		}
+	}
+
+	&--secondary {
+        > li:first-child {
+            display: none;
+        }
+        ul {
+            display: block;
+            li {
+                &:before {
+                    content: attr(data-text);
+                    display: block;
+                    min-width: 45%;
+                    font-weight: 700;
+                    padding-right: 3px;
+                }
+                &:nth-child(1) {
+                    flex: 0 0 40%;
+                }
+
+                &:nth-child(2) {
+                    flex: 0 0 40%;
+                }
+
+                &:nth-child(3) {
+                    flex: 0 0 20%;
+                }
+            }
+        }
+    }
+    &--rounded {
+        border-bottom: 0px;
+        color: $black;
+        .box {
+            background: $whitesmoke-1;
+            border-radius: 10px;
+            margin-bottom: 7px;
+        }
+        .circle {
+            width: 48px;
+            height: 40px;
+            margin-right: 8px;
+        }
+        sup {
+            top: -0.3em;
+            font-size: 14px;
+            padding: 2px;
+            font-weight: 600;
+        }
+        .list--content {
+            border: 0;
+            > li + li {
+                border-top: 0px;
+            }
+        }
+        ul li a {
+            color: $gray-5;
+        }
+    }
+
+    &--colm-five {
+        ul {
+            li {
+                &:nth-child(1) {
+                    flex: 0 0 54%;
+                }
+                &:nth-child(2) {
+                    flex: 0 0 10%;
+                }
+                &:nth-child(3) {
+                    flex: 0 0 10%;
+                }
+                &:nth-child(4) {
+                    flex: 0 0 20%;
+                }
+                &:nth-child(5) {
+                    flex: 0 0 6%;
+                }
+            }
+        }
+    }
+}
+@media (min-width: 576px) {
+    .list-fixed-head,
+    .list-fixed-head-js {
+        > li:first-child {
+            display: block;
+        }
+        ul {
+            display: flex;
+            li:before {
+                display: none;
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .list-fixed-head,
+    .list-fixed-head-js {
+        > li:first-child {
+            display: block;
+        }
+        ul {
+            display: flex;
+            justify-content: space-between;
+            li:before {
+                display: none;
+            }
+        }
+        &--rounded {
+            .head-fixed {
+                ul li {
+                    height: auto;
+                    font-size: 14px;
+                }
+                .heading {
+                    padding-left: 0;
+                    font-size: 20px;
+                    color: $black;
+                }
+            }
+        }
+    }
+}
+
+@media
+only screen
+and (max-width: 760px),
+(min-device-width: 768px)
+and (max-device-width: 1024px)  {
+    .list--content--dark ul li {
+        align-items: baseline;
+       &:nth-child(1):before { content: "Name"; color: $gray-5;}
+       &:nth-child(2):before { content: "Campaigns"; color: $gray-5;}
+    }
+}
+
+/* Vue component to filter and sort tables styling */
+table {
+    thead > tr {
+        > th[aria-sort]:before {
+            display: inline-block;
+            float: right;
+            margin-left: .5em;
+            width: .5em;
+            font-size: inherit;
+            line-height: inherit;
+            content: "↕";
+            speak: none;
+        }
+        > th[aria-sort][aria-sort=ascending]:before {
+            opacity: 1;
+            content: "↓";
+        }
+        > th[aria-sort][aria-sort=descending]:before {
+            opacity: 1;
+            content: "↑";
+        }
+    }
+    tbody {
+        td.first-col a {
+            color: $primary !important;
+            font-weight: 700;
+            text-transform: capitalize;
+        }
+    }
+}
+ul.pagination.justify-content-center {
+    justify-content: left !important;
+    margin: 15px 0;
+    .page-link {
+        color: $primary;
+    }
+    a {
+        position: relative;
+        display: block;
+        padding: 0.5rem 0.75rem;
+        margin-left: -1px;
+        line-height: 1.25;
+        font-size: 16px;
+        color: $primary;
+        cursor: pointer;
+        &:hover {
+            color: $primary;
+            cursor: pointer;
+        }
+    }
+    .page-item.active {
+        .page-link {
+            color: $gray-2;
+        }
+    }
+}
+.form-control.reportrange-text {
+    span {
+        font-size: 14px;
+    }
+}
+
+/* Vue component to filter and sort tables styling */
+table thead > tr > th[aria-sort]:before,
+table thead > tr > th[aria-sort][aria-sort=ascending]:before,
+table thead > tr > th[aria-sort][aria-sort=descending]:before {
+    display: none !important;
+}
+
+table thead > tr > th[aria-sort]:after {
+    display: inline-block !important;
+    margin-left: 0.5em !important;
+    width: 0.5em !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    content: "\2195" !important;
+    speak: none !important;
+  }
+
+  table thead > tr > th[aria-sort][aria-sort=ascending]:after {
+    opacity: 1 !important;
+    content: "\2193" !important;
+    color: $primary !important;
+  }
+
+  table thead > tr > th[aria-sort][aria-sort=descending]:after {
+    opacity: 1 !important;
+    content: "\2191" !important;
+    color: $primary !important;
+  }

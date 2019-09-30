@@ -1,0 +1,22 @@
+## Add Donor Question [/organization/{orgId}/donor-question]
+
++ Parameters
+
+    + orgId: `123` (required, integer) - The organization ID
+
+### Add Donor Question [POST]
+Add/create a new donor questions for the given organization
+
+:::note
+Controller Method: Api\DonorQuestion\DonorQuestionsController@store
+:::
+
++ Request (application/json)
+
+    + Attributes
+
+        + question: `What is your age?` (string, required) - The question to ask to donor
+
++ Response 200 (application/json)
+
+    + Attributes (DonorQuestion)
