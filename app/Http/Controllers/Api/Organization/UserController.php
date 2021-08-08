@@ -8,6 +8,7 @@ use App\Organization;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
+use App\Http\Requests\Organization\UpdateUserRequest;
 use App\Repositories\Contracts\OrganizationRepositoryInterface;
 use App\Jobs\Organization\UpdateUser as UpdateAccountUserJob;
 
@@ -34,7 +35,7 @@ class UserController extends Controller
      * @param  \App\Http\Requests\User\UpdateUserRequest  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update (Organization $organization, User $user, Request $request)
+    public function update (Organization $organization, User $user, UpdateUserRequest $request)
     {
         $userUpdate = dispatch_now(new UpdateAccountUserJob($organization, $user, $request));
         if ($userUpdate !== false) {

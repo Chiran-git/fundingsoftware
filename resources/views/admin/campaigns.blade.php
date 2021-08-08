@@ -21,11 +21,13 @@
             <div class="row">
                 <div class="col-12 table-responsive">
                     <table-component
-                        :data="campaigns.data"
+                        :data="getCampaigns"
                         :show-filter=false
                         :show-caption=false
                         :cache-lifetime=0
                         sort-order="desc"
+                        sort-by="created_at"
+                        ref="Campaigns"
                         table-class="table table-gray"
                         @row-click="clickCampaignRow">
 
@@ -58,13 +60,18 @@
 
                         <table-column show="funds_raised" label="Progress" cell-class="clickable-row text-dark" :sortable="false">
                             <template slot-scope="row">
-                                @{{ row.funds_raised ? row.organization.currency.symbol+$root.donationMoney(row.funds_raised): row.organization.currency.symbol+0}} of @{{ row.organization.currency.symbol+$root.donationMoney(row.fundraising_goal)}}
+                                @{{ row.funds_raised ? row.symbol+$root.donationMoney(row.funds_raised): row.symbol+0}} of @{{ row.symbol+$root.donationMoney(row.fundraising_goal)}}
                             </template>
                         </table-column>
 
+                        <table-column label="" :sortable="false" :filterable="false"  cell-class="clickable-row">
+                            <template slot-scope="row">
+                                <a href="#">
+                                    <span class="fa fa-search form-control-feedback"></span>
+                                </a>
+                            </template>
+                        </table-column>
                     </table-component>
-
-                    <pagination :data="campaigns" @pagination-change-page="getCampaigns"></pagination>
                 </div>
             </div>
         </section>

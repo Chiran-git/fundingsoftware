@@ -212,6 +212,16 @@ Route::middleware('auth:api')->group(function () {
 
     Route::post('/organization/{organization}/donor/{donor}/email', 'Donor\DonorsController@emailDonor')
         ->name('api.donor.email');
+
+    /*======================Campaign Category Endpoints=======================*/
+    Route::get('/categories', 'Campaign\CampaignsController@categories')
+        ->name('api.categories');
+    /*==========================Affiliation Endpoints=========================*/
+    Route::get('/affiliations', 'Donation\DonationsController@getAffiliations')
+        ->name('api.affiliations');
+
+    Route::get('/organization/{organization}/affiliation-donations', 'Organization\Reports\AffiliationDonationsController@index')
+        ->name('api.organization.affiliation-donations');
 });
 
 /*===================================SUPERADMIN==================================*/
@@ -258,4 +268,21 @@ Route::middleware(['auth:api', 'revalidate', 'impersonate.leave'])
     Route::post('/organization/create', 'Admin\Organization\OrganizationController@store')
         ->name('api.admin.organization');
 
+    Route::get('/stats/online-donations', 'Admin\Reports\OnlineDonationsController@stats')
+        ->name('api.stats.online-donations');
+
+    Route::get('/reports/online-donations', 'Admin\Reports\OnlineDonationsController@index')
+        ->name('api.reports.online-donations');
+
+    Route::get('/reports/donation-stats', 'Admin\Reports\DonationStatsController@stats')
+        ->name('api.reports.donation-stats');
+
+    Route::get('/reports/monthly-donations', 'Admin\Reports\DonationStatsController@monthlyDonations')
+        ->name('api.reports.monthly-donations');
+
+    Route::get('/reports/categories', 'Admin\Reports\CategoryController@getCampaignCategories')
+        ->name('api.reports.categories');
+
+    Route::get('/reports/affiliation-donations', 'Admin\Reports\AffiliationDonationsController@index')
+        ->name('api.reports.affiliation-donations');
 });

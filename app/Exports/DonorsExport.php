@@ -59,8 +59,10 @@ class DonorsExport implements FromCollection, WithHeadings, WithMapping
         return [
             $donor->full_name,
             $donor->email,
-            $this->organization->currency->symbol.$donor->total_donated,
-            $donor->total_donations,
+            //$this->organization->currency->symbol.$donor->total_donated,
+            //$donor->total_donations,
+            $this->organization->currency->symbol.$donor->total_donation_amount,
+            $donor->total_donation_count
         ];
     }
 }

@@ -102,6 +102,9 @@
                                     </label>
                                 </div>
                             </div>
+                            <span class="invalid-feedback" v-show="form.errors.has('campaign_ids')">
+                                @{{ form.errors.get('campaign_ids') }}
+                            </span>
                         </li>
                     </ul>
                     <div

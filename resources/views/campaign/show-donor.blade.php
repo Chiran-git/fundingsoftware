@@ -15,7 +15,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ request()->url() }}" />
     @if ($campaign->image)
-    <meta property="og:image" content="{{ RJ::assetCdn($campaign->image) }}" />
+    <meta property="og:image" content="{{ $campaign->image }}" />
     @endif
     <meta property="og:description" content="{{ $campaign->excerpt }}" />
 @endsection
@@ -52,7 +52,7 @@
                             <div class="col-12 col-lg-7 order-1 order-lg-2">
                                 {{-- <img src="{{ RJ::assetCdn($campaign->image) }}" alt="{{ $campaign->name }}"> --}}
                                 @if ($campaign->image)
-                                <div class="donor-hero-filter__image" style="background-image:url({{ RJ::assetCdn($campaign->image) }})"></div>
+                                <div class="donor-hero-filter__image" style="background-image:url({{ $campaign->image }})"></div>
                                 @else
                                 <svg width="100%" height="405">
                                     <rect width="100%" height="100%" fill="#e2e2e2">
@@ -88,7 +88,7 @@
                     <h3 class="aleo w-100">{{ __('Organizer') }}</h3>
                     @if ($organization->logo)
                     <div class="mr-4">
-                        <img class="btn-file--small rounded-circle float-left" src="{{ RJ::assetCdn($organization->logo) }}" alt="{{ $organization->name }}">
+                        <img class="btn-file--small rounded-circle float-left" src="{{ $organization->logo }}" alt="{{ $organization->name }}">
                     </div>
                     @endif
                     <address>

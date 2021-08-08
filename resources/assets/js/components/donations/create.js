@@ -8,6 +8,7 @@ Vue.component('donation-create', {
                 last_name: '',
                 email: '',
                 donation_method: '',
+                affiliation_id: '',
                 check_number: '',
                 gross_amount: '',
                 campaign_id: this.$route.query.campaign || '',
@@ -29,7 +30,8 @@ Vue.component('donation-create', {
             states: {},
             paymentMethods: this.getPaymentMethodOptions(),
             campaignList: this.getCampaigns(),
-            donorQuestions: []
+            donorQuestions: [],
+            affiliations: {},
         }
     },
 
@@ -53,9 +55,18 @@ Vue.component('donation-create', {
                 });
 
             });
+
+        this.getAffiliations();
     },
 
     methods: {
+        getAffiliations() {
+            return axios.get(`${RJ.apiBaseUrl}/affiliations`)
+            .then( response => {
+                this.affiliations = response.data;
+            });
+        },
+
         submit() {
             if (this.sameAsBilling) {
                 this.form.mailing_address1 = this.form.billing_address1;
@@ -87,6 +98,10 @@ Vue.component('donation-create', {
 
         getPaymentMethodOptionLabel (paymentMethod) {
             return this.paymentMethods[paymentMethod];
+        },
+
+        getAffiliationOptionLabel (affiliation) {
+            return this.affiliations[affiliation].name;
         },
 
         getCampaignOptionLabel (campaign) {
@@ -138,7 +153,16 @@ Vue.component('donation-create', {
             });
 
             return options;
-        }
+        },
+
+        affiliationOptions () {
+            let options = [];
+
+            _.each(this.affiliations, (label, affiliation) => {
+                options.push(affiliation);
+            });
+            return options;
+        },
 
     },
 

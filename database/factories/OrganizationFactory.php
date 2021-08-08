@@ -1,29 +1,46 @@
 <?php
 
-/* @var $factory \Illuminate\Database\Eloquent\Factory */
+namespace Database\Factories;
 
 use App\Organization;
-use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(Organization::class, function (Faker $faker) {
+
+class OrganizationFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = \App\Organization::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
 
     $currencyRepo = app(\App\Repositories\Contracts\CurrencyRepositoryInterface::class);
     $countryRepo = app(\App\Repositories\Contracts\CountryRepositoryInterface::class);
 
-    return [
-        'name' => $faker->company,
-        'owner_id' => function () {
-            return factory(\App\User::class)->create()->id;
-        },
-        'address1' => $this->faker->streetAddress,
-        'city' => $this->faker->city,
-        'state' => $this->faker->stateAbbr,
-        'zipcode' => $this->faker->postcode,
-        'phone' => $this->faker->phoneNumber,
-        'slug' => $this->faker->slug,
-        'currency_id' => $currencyRepo->findDefault()->id,
-        'country_id' => $countryRepo->findDefault()->id,
-        'primary_color' => config('app.defaults.primary_color'),
-        'secondary_color' => config('app.defaults.secondary_color'),
-    ];
-});
+        return [
+            'name' => $faker->company,
+            'owner_id' => function () {
+                return \App\User::factory()->create()->id;
+            },
+            'address1' => $this->faker->streetAddress,
+            'city' => $this->faker->city,
+            'state' => $this->faker->stateAbbr,
+            'zipcode' => $this->faker->postcode,
+            'phone' => $this->faker->phoneNumber,
+            'slug' => $this->faker->slug,
+            'currency_id' => $currencyRepo->findDefault()->id,
+            'country_id' => $countryRepo->findDefault()->id,
+            'primary_color' => config('app.defaults.primary_color'),
+            'secondary_color' => config('app.defaults.secondary_color'),
+        ];
+    }
+}

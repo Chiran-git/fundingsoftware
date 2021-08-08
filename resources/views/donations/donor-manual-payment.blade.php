@@ -51,13 +51,6 @@
                                     </span>
                                 </li>
 
-                            {{--  <li class='field size2 align-top'><label class='field_label'>{{ __("Donor's Name")}}</label>
-                                <div class='input_container input_container_text'>
-                                    <input type='text'
-                                        placeholder='{{ __("Donor's Name")}}'
-                                    >
-                                </div>
-                            </li>  --}}
                             <li class='field size2 align-top'><label class='field_label'>{{ __("Donor's Email")}}</label>
                                 <div class='input_container input_container_text'>
                                     <input type='text'
@@ -88,6 +81,26 @@
                                     @{{ form.errors.get('donation_method') }}
                                 </span>
                             </li>
+
+                            <li class='field size1 align-top pr-lg-4'>
+                                <label class='field_label'>{{ __('Affiliation')}}</label>
+                                <div class='input_container_select'>
+                                    <v-select :options="affiliationOptions"
+                                        placeholder="{{ __('Affiliation')}}"
+                                        v-model="form.affiliation_id" :class="{'is-invalid': form.errors.has('affiliation_id')}">
+                                        <template slot="option" slot-scope="option">
+                                            @{{ getAffiliationOptionLabel(option.label) }}
+                                        </template>
+                                        <template slot="selected-option" slot-scope="option">
+                                            @{{ getAffiliationOptionLabel(option.label) }}
+                                        </template>
+                                    </v-select>
+                                </div>
+                                <span class="invalid-feedback" v-show="form.errors.has('affiliation_id')">
+                                    @{{ form.errors.get('affiliation_id') }}
+                                </span>
+                            </li>
+
                             <li class='field size1 align-top' v-show="form.donation_method == 'check'">
                                 <label class='field_label'>{{ __('Check Number')}}</label>
                                 <div class='input_container input_container_text'>

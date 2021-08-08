@@ -174,7 +174,7 @@ class UserRepository extends Repository implements UserRepositoryInterface
      *
      * @return array
      */
-    public function getAdminUsersList($limit = 5, $pagination = true)
+    public function getAdminUsersList($limit = 10, $pagination = true)
     {
         $query = $this->model
             ->select('id','first_name', 'last_name', 'email', 'user_type')

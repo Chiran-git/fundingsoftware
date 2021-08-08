@@ -25,7 +25,7 @@ class CampaignResource extends JsonResource
             'funds_raised' => $this->funds_raised,
             'total_donations' => $this->total_donations,
             'end_date' => $this->end_date,
-            'image' => $this->image ? RJ::assetCdn($this->image) : null,
+            'image' => $this->image ? $this->image : null,
             'payout_connected_account_id' => $this->payout_connected_account_id,
             'payout_name' => $this->payout_name,
             'payout_organization_name' => $this->payout_organization_name,

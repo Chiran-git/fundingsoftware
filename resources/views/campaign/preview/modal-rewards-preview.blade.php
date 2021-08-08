@@ -135,7 +135,7 @@
                                         <div class="" v-if="reward.title">
                                             <div class="rewards-card__status d-flex flex-wrap align-items-center mt-4">
                                                 <button type="submit" class="btn btn--m-w-auto rounded-pill mr-3 f-12">{{ __('Select') }}</button>
-                                                <span class="f-14 font-weight-bold" v-if="reward.quantity">@{{ Math.floor(reward.quantity / 2)}} <span class="font-weight-normal">of</span> @{{ Math.floor(reward.quantity) }} <span class="font-weight-normal">claimed</span></span>
+                                                <span class="f-14 font-weight-bold" v-if="reward.quantity">@{{ Math.floor(reward.quantity_rewarded ? reward.quantity_rewarded : 0)}} <span class="font-weight-normal">of</span> @{{ Math.floor(reward.quantity) }} <span class="font-weight-normal">claimed</span></span>
                                             </div>
                                         </div>
                                     </div>

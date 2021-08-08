@@ -79,6 +79,11 @@
                             </template>
                         </table-column>
                         <table-column show="name" label="{{ __('Campaign') }}"></table-column>
+                        <table-column show="affiliation" label="{{ __('Affiliation') }}">
+                            <template slot-scope="row">
+                                @{{ row.affiliation ? row.affiliation : '-'}}
+                            </template>
+                        </table-column>
                         <table-column show="title" label="{{ __('Reward') }}">
                             <template slot-scope="row">
                                 @{{ row.title ? row.title : $root.rj.translations.none }}

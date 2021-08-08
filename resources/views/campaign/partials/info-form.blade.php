@@ -33,6 +33,23 @@
                                     @{{ form.errors.get('name') }}
                                 </span>
                             </li>
+                            <li class='field size2 align-top'><label class='field_label'>{{ __('Campaign Category')}}</label>
+                                <div class='input_container_select'>
+                                    <v-select :options="categoryOptions"
+                                            placeholder="{{ __('Select Category') }}"
+                                            v-model="form.campaign_category_id">
+                                        <template slot="option" slot-scope="option">
+                                            @{{ getCategoryOptionLabel(option.label) }}
+                                        </template>
+                                        <template slot="selected-option" slot-scope="option" v-bind="(typeof option === 'object')?option:{[label]: option}">
+                                            @{{ getCategoryOptionLabel(option.label) }}
+                                        </template>
+                                    </v-select>
+                                </div>
+                                <span class="invalid-feedback" v-show="form.errors.has('campaign_category_id')">
+                                    @{{ form.errors.get('campaign_category_id') }}
+                                </span>
+                            </li>
                             <li class='field size1 align-top pb-2 pb-lg-6 pr-lg-5'>
                                 <label class='field_label'>{{ __('Fundraising Goal')}}</label>
                                 <div class="input-group mb-2">

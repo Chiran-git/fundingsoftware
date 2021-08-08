@@ -86,7 +86,7 @@
             :modal-subtitle="campaign.name"
             :share-url="'{{ url('/') }}/' + organization.slug + '/' + campaign.slug"
             :share-headline="campaign.name"
-            :share-text="'{{ __('Fund projects that matter') }} {{ url('/') }}' + organization.slug + '/' + campaign.slug">
+            :share-text="'{{ __('Fund projects that matter') }} {{ url('/') }}/' + organization.slug + '/' + campaign.slug">
             @include('partials.modals.modal-share')
         </share-modal>
 
@@ -112,7 +112,7 @@
                                 </div>
                             <div class="ml-1">
                                 <p class="mb-0 aleo">{{ __('Net Donations') }}</p>
-                                <h2><sup class="f-18">$ </sup>@{{ $root.donationMoney(campaignStats.total_donation) }}</h2>
+                                <h2><sup class="f-18">$ </sup>@{{ $root.donationMoney(campaignStats.net_donation) }}</h2>
                             </div>
                             <a :href="`${$root.rj.baseUrl}/donations?campaign=${campaign.id}`" class="stretched-link"></a>
                         </div>

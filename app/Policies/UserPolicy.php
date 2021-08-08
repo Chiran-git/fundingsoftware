@@ -93,4 +93,18 @@ class UserPolicy
             return true;
         }
     }
+
+    /**
+     * Determine whether the user can view the report.
+     *
+     * @param User $user
+     * @param Campaign $campaign
+     * @return mixed
+     */
+    public function viewReport(User $user)
+    {
+        if ($user->isSuperAdmin()) {
+            return true;
+        }
+    }
 }

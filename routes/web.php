@@ -111,6 +111,10 @@ Route::middleware(['auth', 'revalidate'])->group(function () {
     Route::get('/organization/{organization}/donations/export', 'DonationsController@export')->name('donations.export');
 
     Route::get('payouts', 'PayoutsController@index')->name('payouts.index');
+
+    Route::get('report-affiliations',
+        'OrganizationReportsController@affiliationReports')
+        ->name('reports.affiliations');
 });
 
 Route::middleware(['auth', 'revalidate', 'impersonate.leave'])
@@ -146,7 +150,15 @@ Route::middleware(['auth', 'revalidate', 'impersonate.leave'])
 
         Route::get('change-password', 'Admin\DashboardController@getChangePassword')->name('admin.change-password');
 
-        Route::get ( '/impersonate/{organization}', 'DashboardController@impersonate' )->name('impersonate');
+        Route::get ('/impersonate/{organization}', 'DashboardController@impersonate')->name('impersonate');
+
+        Route::get ('/reports/online-donations', 'Admin\DashboardController@onlineDonations')->name('reports.online-donations');
+
+        Route::get ('/reports/donation-stats', 'Admin\DashboardController@reportDonationStats')->name('reports.donation-stats');
+
+        Route::get ('/reports/category-stats', 'Admin\DashboardController@reportCategoryStats')->name('reports.category-stats');
+
+        Route::get ('/reports/affiliation-donations', 'Admin\DashboardController@reportAffiliationDonations')->name('reports.affiliation-donations');
 });
 
 ### Donor Routes ####

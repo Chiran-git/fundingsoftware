@@ -97,10 +97,11 @@
                                                     <template v-if="organization.appeal_photo">
                                                         <div class="img-container float-right rounded-circle" :style="imageStyles.appeal_photo"></div>
                                                     </template>
-                                                    <span v-if="form.appeal_message">@{{ form.appeal_message }}</span>
-                                                    <span v-else="form.appeal_message">@{{ organization.appeal_message }}</span>
+                                                    <span v-if="form.appeal_message" v-html="$root.renderMd(form.appeal_message)"></span>
+                                                    <span v-else-if="organization.appeal_message" v-html="$root.renderMd(organization.appeal_message)"></span>
+                                                    <span v-else></span>
                                                 </p>
-                                                @include('partials.common.social-share-preview')
+                                                <p>@include('partials.common.social-share-preview')</p>
                                             </div>
                                         </div>
                                     </div>

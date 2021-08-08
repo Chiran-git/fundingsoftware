@@ -31,9 +31,23 @@ class UpdateDesignRequest extends FormRequest
             'logo' => ['sometimes', 'image', 'dimensions:min_width=100,min_height=100', 'max:1048'],
             'primary_color' => ['required', 'alpha-num', 'max:6'],
             'secondary_color' => ['required', 'alpha-num', 'max:6'],
-            'appeal_headline' => ['required', 'string'],
-            'appeal_message' => ['required', 'string'],
+            'appeal_headline' => ['required'],
+            'appeal_message' => ['required'],
             'appeal_photo' => ['sometimes', 'image', 'dimensions:min_width=100,min_height=100', 'max:1048'],
+        ];
+    }
+
+    /**
+     * Custom validation messages.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'cover_image.image' => 'The cover image must be an image (Only jpeg, png, bmp, gif, svg, or webp supported).',
+            'logo.image' => 'The logo must be an image (Only jpeg, png, bmp, gif, svg, or webp supported).',
+            'appeal_photo.image' => 'The appeal photo must be an image (Only jpeg, png, bmp, gif, svg, or webp supported).'
         ];
     }
 }

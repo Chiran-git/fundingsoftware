@@ -38,10 +38,11 @@ class UpdateNoOfResend implements ShouldQueue
      */
     public function handle(InvitationRepositoryInterface $invitationRepo)
     {
-        // Update the no of resends
+        // Update the no of resends and expiry date
         return $invitationRepo->update(
             $this->invitation->id,
             [
+                'expires_at' => date('Y-m-d H:i:s', strtotime("+7 days")),
                 'no_of_resends' => $this->invitation->no_of_resends + 1
             ]
         );

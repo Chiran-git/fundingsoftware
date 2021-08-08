@@ -73,6 +73,7 @@ class Create implements ShouldQueue
                 'organization_id' => $this->organization->id,
                 'created_by_id' => $this->user->id,
                 'name' => $this->data['name'],
+                'campaign_category_id' => $this->data['campaign_category_id'],
                 'fundraising_goal' => $this->data['fundraising_goal'],
                 'end_date' => ! empty($this->data['end_date']) ? Carbon::parse($this->data['end_date']) : null,
                 'video_url' => ! empty($this->data['video_url']) ? $this->data['video_url'] : null,

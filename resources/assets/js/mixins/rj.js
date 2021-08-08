@@ -76,6 +76,10 @@ module.exports = {
             return axios.get(`${RJ.apiBaseUrl}/organization/${organizationId}/campaign/${id}`);
         },
 
+        getCategories() {
+            return axios.get(`${RJ.apiBaseUrl}/categories`);
+        },
+
         getRewards(organizationId, campaignId) {
             return axios.get(`${RJ.apiBaseUrl}/organization/${organizationId}/campaign/${campaignId}/reward`);
         },

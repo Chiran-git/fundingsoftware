@@ -11,6 +11,9 @@ require('./admin/organization/org-list');
 require('./admin/organization/switch-org');
 require('./admin/campaign/camp-list');
 require('./admin/payout/payout-create');
+require('./admin/reports/online-donations');
+require('./admin/reports/donation-stats');
+require('./admin/reports/category-stats');
 
 require('./organization/org-create');
 require('./organization/org-setup');
@@ -22,6 +25,7 @@ require('./organization/org-completed');
 require('./organization/org-accountuser');
 require('./organization/org-dashboard');
 require('./organization/search-autocomplete');
+require('./organization/reports/affiliation-donations');
 
 require('./campaign/create');
 require('./campaign/info');

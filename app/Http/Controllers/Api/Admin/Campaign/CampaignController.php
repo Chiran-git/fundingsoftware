@@ -36,8 +36,11 @@ class CampaignController extends Controller
     	$this->authorize('viewAny', $request->user());
 
         $status = $request->status;
-
-        if ($status == 'active') {
+        $limit = $request->limit;
+        if (! $limit) {
+            return $this->repo->getCampaignsList(config('pagination.limit'));
+        }
+        if ($limit < 10 && $status == 'active') {
             $activeCampaigns = Campaign::where('published_at', '<=', now())
                             ->whereNull('disabled_at')
                             ->where(
@@ -46,22 +49,14 @@ class CampaignController extends Controller
                                         ->orWhere('end_date', '>=', now());
                                 }
                             )->latest('created_at')->paginate($request->limit);
-
             return CampaignResource::collection($activeCampaigns);
-
-        } else if ($status == 'completed') {
+        } elseif ($limit < 10 && $status == 'completed') {
             $completedCampaigns = Campaign::where([
                 ['published_at', '<=', now()],
                 ['end_date', '<=', now()]
             ])
             ->whereNull('disabled_at')->latest('end_date')->paginate($request->limit);
-
             return CampaignResource::collection($completedCampaigns);
-
-        } else {
-            return CampaignResource::collection(
-                Campaign::paginate($request->limit)
-            );
         }
     }
 

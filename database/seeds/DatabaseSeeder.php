@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         Artisan::call('passport:install --no-interaction');
         $this->call(UsersTableSeeder::class);
         $this->call(CurrenciesAndCountriesTableSeeder::class);
+        $this->call(CampaignCategoriesTableSeeder::class);
     }
 }

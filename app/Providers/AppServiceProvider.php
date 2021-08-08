@@ -4,7 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,9 +27,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         // We don't want json resources to be wrapped in "data" keys
-        Resource::withoutWrapping();
+        JsonResource::withoutWrapping();
 
         $this->defineBladeDirectives();
+
+        Schema::defaultStringLength(191);
     }
 
     /**

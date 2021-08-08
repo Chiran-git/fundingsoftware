@@ -19,14 +19,19 @@ Vue.component('camp-list', {
     },
 
     methods: {
-        getCampaigns(page) {
-            if (typeof page === 'undefined') {
+        async getCampaigns({ page, filter, sort }) {
+            if (typeof page === 'undefined' || this.resetPage) {
                 page = 1;
+                this.resetPage = false;
             }
             this.status = this.$route.query.status;
-            axios.get(`${RJ.apiBaseUrl}/admin/campaigns?status=${this.status}&limit=10&&page=${page}`)
+            var queryParams = {params: {'page': page, 'sort': sort, 'status': this.status, 'start_date': this.startDate, 'end_date': this.endDate}};
+
+            // Load the campaigns
+            return axios.get(`${RJ.apiBaseUrl}/admin/campaigns`, queryParams)
                 .then(response => {
-                    this.campaigns = response.data;
+                    response.data.pagination = {'currentPage': response.data.current_page, 'totalPages': response.data.last_page};
+                    return response.data;
                 });
         },
 

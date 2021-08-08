@@ -53,7 +53,7 @@
                                                         <p class="font-italic mb-2">{{ __('Your check will be payable to:') }}</p>
                                                         <p>@{{ payoutInfo.payout_payable_to }}
                                                             <a href="#" class="text-link text-link--red d-block font-weight-bold"
-                                                            @click.prevent="$parent.showPreview('add-check-mail-payable-to')">{{ __('Use a Different Name') }}</a>
+                                                            @click.prevent="showChequePayablePreview('add-check-mail-payable-to')">{{ __('Use a Different Name') }}</a>
                                                         </p>
                                                     </div>
                                                 </div>

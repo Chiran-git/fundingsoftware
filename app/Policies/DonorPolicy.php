@@ -38,7 +38,7 @@ class DonorPolicy
         // Find all organizations of this user and see if user is owner or admin or campaign-admin
         $organization = $user->currentOrganization();
 
-        if ($user->currentRole() == 'owner') {
+        if ($user->currentRole() == 'owner' || $user->currentRole() == 'admin') {
             return $donor->isOrganizationDonor($organization->id);
         } else if ($user->currentRole() == 'campaign-admin') {
             $campaignIds = CampaignUser::where('organization_id', $organization->id)

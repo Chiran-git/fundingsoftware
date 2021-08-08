@@ -1,18 +1,19 @@
 <div class="wizard-inline {{ (request()->is('organization/edit')) ? 'wizard-inline--vertical mb-5' : ''  }}">
     <ul>
         <li>
-            <a :class="{'iscompleted': currentStep > 1, 'isactive': currentStep == 1}"
-                @click="changeTab(1)">{{ __('Organization Profile')}}
+            <a :class="{'iscompleted': currentStep != 1, 'isactive': currentStep == 1}"
+                @click="changeStep(1)">{{ __('Organization Profile')}}
             </a>
         </li>
         <li>
-            <a :class="{'iscompleted': currentStep > 2, 'isactive': currentStep == 2}"
-                @click="changeTab(2)">{{ __('Organization Page design')}}
+            <a :class="{'iscompleted': currentStep != 2, 'isactive': currentStep == 2}"
+                @click="changeStep(2)">{{ __('Organization Page design')}}
             </a>
         </li>
         <li>
-            <a :class="{'iscompleted': currentStep > 3, 'isactive': currentStep == 3}"
-                @click="changeTab(3)">{{ __('Donor Profiles')}}
+            <a :class="{'iscompleted': currentStep != 3, 'isactive': currentStep == 3}"
+            
+                @click="changeStep(3)">{{ __('Donor Profiles')}}
             </a>
         </li>
         @if ((request()->is('organization/edit')))
@@ -22,8 +23,8 @@
             @endphp
             @if (in_array($role, ['owner', 'admin']) )
             <li>
-                <a :class="{'iscompleted': currentStep > 4, 'isactive': currentStep == 4}"
-                    @click="changeTab(4)">{{ __('Account Users')}}
+                <a :class="{'iscompleted': currentStep != 4, 'isactive': currentStep == 4}"
+                    @click="changeStep(4)">{{ __('Account Users')}}
                 </a>
             </li>
             <li>

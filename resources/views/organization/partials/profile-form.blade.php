@@ -19,9 +19,9 @@
     <div class="section__content">
         <div class="form-container {{ (request()->is('organization/edit')) ? '' : 'form-container--small'  }}">
             <div class='form_wrapper'>
-                <form method='post' @submit.prevent="submit">
+                <form method='post' @submit.prevent="submit"  v-on:change="$parent.setStepsCompleted()">
                     <ul class='form_fields'>
-                        @if ( auth()->user()->isSuperadmin() )
+                        @if ( auth()->user()->isSuperadmin() || auth()->user()->isAppadmin() )
                         <li class='field size1 align-top'>
                             <label class='field_label field_label--asterisk'>{{ __('Account Owner First Name')}}</label>
                             <div class='input_container input_container_text'>

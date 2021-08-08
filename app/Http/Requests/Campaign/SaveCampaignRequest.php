@@ -33,6 +33,7 @@ class SaveCampaignRequest extends FormRequest
     {
         return [
             'name' => ['sometimes', 'required', 'string'],
+            'campaign_category_id' => ['required', 'numeric'],
             'fundraising_goal' => ['sometimes', new CheckAmount, 'not_in:0'],
             'video_url' => ['sometimes', 'nullable', 'string', new ContainsVideoUrl],
             'description' => ['sometimes', 'required', 'string'],
@@ -66,8 +67,9 @@ class SaveCampaignRequest extends FormRequest
     public function messages()
     {
         return [
-            'fundraising_goal.not_in' => __('Donation amount cannot be 0'),
-            'payout_connected_account_id.required_if' => 'Account is required',
+            'fundraising_goal.not_in' => __('Donation amount cannot be 0.'),
+            'payout_connected_account_id.required_if' => __('Account is required.'),
+            'campaign_category_id.required' => __('Please select a category.')
         ];
     }
 }

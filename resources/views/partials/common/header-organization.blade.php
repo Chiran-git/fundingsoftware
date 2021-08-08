@@ -48,6 +48,8 @@
                             <a class="dropdown-item" href="{{ route('payouts.index') }}">{{ __('Pay-Out History')}}</a>
                             <a class="dropdown-item"
                                 href="{{ route('connected-account.index') }}">{{ __('Pay-Out Accounts')}}</a>
+                            <a class="dropdown-item"
+                                href="{{ route('reports.affiliations') }}">{{ __('Affiliation Reports')}}</a>
                             @endif
                         </div>
                     </li>
@@ -61,7 +63,7 @@
                             aria-haspopup="false" aria-expanded="false">
                             <span class="account-user-avatar account-user-avatar--alt">
                                 @if (auth()->user()->organization->logo)
-                                <img src="{{ RJ::assetCdn(auth()->user()->organization->logo) }}" alt="user-image"
+                                <img src="{{ auth()->user()->organization->logo }}" alt="user-image"
                                     class="rounded-circle avatar">
                                 @else
                                 <img src="{{ asset('images/users/avatar-1.png') }}" alt="user-image"

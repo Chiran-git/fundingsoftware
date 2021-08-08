@@ -43,6 +43,13 @@ Vue.component('org-create', {
         scrollToTop () {
             this.$SmoothScroll(document.getElementById('account-setup'));
         },
+
+        setStepsCompleted () {
+            this.stepsCompleted = 0;
+            if ((this.currentStep > 1) && (this.stepsCompleted != this.currentStep)) {
+                this.stepsCompleted = this.currentStep - 1;
+            }            
+        }
     }
 
 });

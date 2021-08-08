@@ -34,7 +34,9 @@ Vue.component('campaign-info', {
                 video_url: '',
                 description: '',
                 image: '',
+                campaign_category_id: '',
             }),
+            categories:[],
             imageStyles: {
                 image: {},
             },
@@ -71,7 +73,15 @@ Vue.component('campaign-info', {
             this.form.video_url = this.campaign.video_url;
             this.form.description = this.campaign.description;
             this.form.image = this.campaign.image;
+            if (typeof this.campaign.campaign_category !== 'undefined') {
+                this.form.campaign_category_id = this.campaign.campaign_category.id ? this.campaign.campaign_category.id : "";
+            }
             this.setImageStyles();
+
+            let categoriesPromise = this.$root.getCategories()
+                .then(response => {
+                    this.categories = response.data
+                });
         },
 
         setImageStyles () {
@@ -128,6 +138,12 @@ Vue.component('campaign-info', {
             window.location.href = `${RJ.baseUrl}/${this.organization.slug}/${this.campaign.slug}/donate`;
         },
 
+        getCategoryOptionLabel (category) {
+            if (typeof this.categories[category] !== 'undefined') {
+                return this.categories[category].name;
+            }
+        },
+
         submit ()  {
             this.form.startProcessing();
             // We need to gather a fresh FormData instance to POST it up to the server.
@@ -135,6 +151,7 @@ Vue.component('campaign-info', {
             let formData = new FormData();
             // Replace # in the color codes with empty strings
             formData.append('name', this.form.name);
+            formData.append('campaign_category_id', this.form.campaign_category_id);
             formData.append('fundraising_goal', this.form.fundraising_goal);
             formData.append('end_date', this.form.end_date ? this.$root.convertBrowserToUTC(this.form.end_date) : '');
             formData.append('video_url', this.form.video_url ? this.form.video_url : '');
@@ -178,6 +195,18 @@ Vue.component('campaign-info', {
                 this.$root.eMessage(RJ.translations.save_error);
                 this.form.finishProcessing();
             });
-        }
+        },
+
+    },
+
+    computed : {
+        categoryOptions () {
+            let options = [];
+            _.each(this.categories, (label, category) => {
+                options.push(category);
+            });
+            return options;
+        },
     }
+
 });

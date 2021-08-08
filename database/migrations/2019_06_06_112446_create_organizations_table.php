@@ -39,7 +39,7 @@ class CreateOrganizationsTable extends Migration
             $table->string('appeal_photo')->nullable();
             $table->string('appeal_photo_filename')->nullable();
             $table->bigInteger('appeal_photo_filesize')->unsigned()->nullable();
-            $table->json('system_donor_questions')->nullable();
+            $table->text('system_donor_questions')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

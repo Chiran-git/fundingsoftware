@@ -66,23 +66,37 @@
   &--secondary ul {
     justify-content: space-between;
     flex-wrap: wrap;
-    li a {
-      color: $primary;
-      padding: 10px;
-      margin-bottom: 8px;
-      font-size: inherit;
-      border-radius: 0;
-      text-indent: 0;
-      margin-bottom: 8px;
-      width: 140px;
-      &:before,
-      &:after {
-        display: none;
-      }
-      &.isactive:hover,
-      &.isactive {
-        color: $gray-3;
-      }
+    li {
+        a {
+            color: $primary;
+            padding: 10px;
+            margin-bottom: 8px;
+            font-size: inherit;
+            border-radius: 0;
+            text-indent: 0;
+            margin-bottom: 8px;
+            width: 140px;
+            &:before,
+            &:after {
+                display: none;
+            }
+            &.isactive:hover,
+            &.isactive {
+                color: $gray-3;
+            }
+        }
+        a:not([href]):not([tabindex]) {
+            color: $primary;
+            background: $wizard-link;
+            &.isactive:hover,
+            &.isactive {
+              background: $wizard-active;
+              color: $gray-3;
+              &:after {
+                border-left-color: $wizard-active;
+              }
+            }
+        }
     }
   }
     &--vertical ul {
@@ -230,7 +244,7 @@
 @media not all and (min-resolution:.001dpcm)
 { @supports (-webkit-appearance:none) and (stroke-color:transparent) {
     @media screen and (max-width: 767px) {
-      .wizard-inline ul li a:before { 
+      .wizard-inline ul li a:before {
         padding-left: 27px;
         padding-top: 15px;
       }

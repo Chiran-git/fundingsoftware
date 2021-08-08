@@ -56,13 +56,13 @@ Vue.component('org-pagedesign', {
     methods: {
 
         setDesigns() {
-            this.form.primary_color = this.organization.primary_color ;
-            this.form.secondary_color = this.organization.secondary_color ;
-            this.form.appeal_headline = this.organization.appeal_headline ;
-            this.form.appeal_message = this.organization.appeal_message ;
+            this.form.primary_color = this.organization.primary_color || '';
+            this.form.secondary_color = this.organization.secondary_color || '';
+            this.form.appeal_headline = this.organization.appeal_headline || '';
+            this.form.appeal_message = this.organization.appeal_message || '';
 
-            this.primary_color = this.organization.primary_color ;
-            this.secondary_color = this.organization.secondary_color ;
+            this.primary_color = this.organization.primary_color || '';
+            this.secondary_color = this.organization.secondary_color || '';
         },
 
         setImageStyles() {
@@ -79,8 +79,27 @@ Vue.component('org-pagedesign', {
         },
 
         changeImage(field) {
+
             // this.organization[field] = URL.createObjectURL(this.$refs[field].files[0]);
-            this.initializeCrop(this.$refs[field].files[0], field, this.organization);
+            
+            // Remove the field name from files to delete if present
+            // as we are actually uploading a new image
+            let fileName = this.$refs[field].files[0].name;
+            let fileExtension = fileName.replace(/^.*\./, '').toLowerCase().trim();
+
+            if (fileExtension == 'jpeg' || fileExtension == 'jpg' || fileExtension == 'bmp' ||
+                fileExtension == 'png' || fileExtension == 'gif' ||
+                fileExtension == 'svg' || fileExtension == 'webp') {
+                
+                this.initializeCrop(this.$refs[field].files[0], field, this.organization);
+                
+            } else {
+                let error = `Please upload image (Only jpeg, png, bmp, gif, svg, or webp supported).`;
+                this.$root.eMessage(error);
+                this.resetFileInput(field);
+                
+            }
+
             this.setImageStyles();
         },
 
@@ -221,10 +240,12 @@ Vue.component('org-pagedesign', {
         primary_color (value) {
             this.form.primary_color = value;
             this.setbackgroundColorStyle ();
+            this.$parent.setStepsCompleted();
         },
         secondary_color (value) {
             this.form.secondary_color = value;
             this.setbackgroundColorStyle ();
+            this.$parent.setStepsCompleted();
         }
     }
 });

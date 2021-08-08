@@ -20,6 +20,7 @@ class Donation extends Model
     public $fillable = [
         'organization_id',
         'donor_id',
+        'affiliation_id',
         'payout_method',
         'entry_type',
         'donation_method',
@@ -160,6 +161,26 @@ class Donation extends Model
             $donationStats->funds_raised
         );
         return $donation->campaign->save();
+    }
+
+    /**
+     * Get the organization logo.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getLogoAttribute($value)
+    {
+        return $value ? RJ::assetCdn($value) : null;
+    }
+
+    /**
+     * Method to get the affiliation
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function affiliation()
+    {
+        return $this->belongsTo(Affiliation::class, 'affiliation_id');
     }
 
 }

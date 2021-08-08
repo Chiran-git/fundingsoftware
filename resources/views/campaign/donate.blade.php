@@ -15,7 +15,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ request()->url() }}" />
     @if ($campaign->image)
-    <meta property="og:image" content="{{ RJ::assetCdn($campaign->image) }}" />
+    <meta property="og:image" content="{{ $campaign->image }}" />
     @endif
     <meta property="og:description" content="{{ $campaign->excerpt }}" />
 @endsection

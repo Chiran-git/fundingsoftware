@@ -16,7 +16,7 @@
             <h5 class="{{ (request()->is('organization/edit')) ? 'd-none' : '' }}">{{ __('Step 2 of 4')}}</h5>
             <h3>{{ __('Organization Page Design')}}</h3>
         </div>
-        <form method='post' @submit.prevent="submit">
+        <form method='post' @submit.prevent="submit" v-on:change="$parent.setStepsCompleted()">
             <div class="section__content">
                 <div class="form-container {{ (request()->is('organization/edit')) ? 'form-edit' : 'form-container--small'  }}">
                     <div class='form_wrapper'>
@@ -33,7 +33,7 @@
                                                 @change="changeImage('cover_image')">
                                         <template v-if="! organization.cover_image">
                                             <span class="mb-2">{{ __("Add a Photo")}}</span>
-                                            <span class="small f-16">{{ __('Minimum size: ')}}@{{ originalImageFiles.cover_image.requiredWidth }} X @{{ originalImageFiles.cover_image.requiredHeight }}px</span>
+                                            <span class="small f-16">{{ __('Minimum size: ')}}@{{ originalImageFiles.cover_image.requiredWidth }} X @{{ originalImageFiles.cover_image.requiredHeight }}px {{ __('( Only images are allowed )') }}</span>
                                         </template>
                                     </div>
                                 </div>
@@ -55,7 +55,9 @@
                                                 @change="changeImage('logo')">
                                         <span class="mb-2" v-if="! organization.logo">{{ __("Add a Photo")}}</span>
                                     </div>
-                                    <span class="small f-16 float-left pl-3">{{ __('Minimum size:')}}<br/>@{{ originalImageFiles.logo.requiredWidth }} X @{{ originalImageFiles.logo.requiredHeight }}px</span>
+                                    <span class="small f-16 float-left pl-3">{{ __('Minimum size:')}}<br/>@{{ originalImageFiles.logo.requiredWidth }} X @{{ originalImageFiles.logo.requiredHeight }}px <br/>
+                                        {{ __('Only images are allowed') }}
+                                    </span>
                                 </div>
                                 <span class="invalid-feedback" v-show="form.errors.has('logo')">
                                     @{{ form.errors.get('logo') }}
@@ -125,7 +127,9 @@
                                             @change="changeImage('appeal_photo')">
                                     <span class="mb-1 f-14"  v-if="! organization.appeal_photo">{{ __("Add a Photo")}}</span>
                                 </div>
-                                <span class="small f-16 float-left pl-3">{{ __('Minimum size:')}}<br/>@{{ originalImageFiles.appeal_photo.requiredWidth }} X @{{ originalImageFiles.appeal_photo.requiredHeight }}px</span>
+                                <span class="small f-16 float-left pl-3">{{ __('Minimum size:')}}<br/>@{{ originalImageFiles.appeal_photo.requiredWidth }} X @{{ originalImageFiles.appeal_photo.requiredHeight }}px <br/>
+                                {{ __('Only images are allowed') }}
+                                </span>
                             </div>
                             <span class="invalid-feedback pl-3" v-show="form.errors.has('appeal_photo')">
                                 @{{ form.errors.get('appeal_photo') }}

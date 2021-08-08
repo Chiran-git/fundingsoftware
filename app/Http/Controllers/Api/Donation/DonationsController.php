@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers\Api\Donation;
 
-use DB;
 use Auth;
 use App\Donor;
 use App\Campaign;
 use App\Donation;
 use Carbon\Carbon;
 use App\Support\RJ;
+use App\Affiliation;
 use App\CampaignUser;
 use App\Organization;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DonationResource;
-use App\Repositories\Contracts\DonationRepositoryInterface;
+use App\Http\Resources\AffiliationResource;
 
 class DonationsController extends Controller
 {
@@ -24,8 +24,7 @@ class DonationsController extends Controller
      */
     private $repo;
 
-    public function __construct (DonationRepositoryInterface $repo)
-    {
+    public function __construct (DonationRepositoryInterface $repo){
         $this->repo = $repo;
     }
 
@@ -232,5 +231,13 @@ class DonationsController extends Controller
                 ])->sortByDesc('created_at')
             );
         }
+    }
+
+    /**
+     * Method to get the list of affiliation
+     */
+    public function getAffiliations(Request $request)
+    {
+        return AffiliationResource::collection(Affiliation::all());
     }
 }

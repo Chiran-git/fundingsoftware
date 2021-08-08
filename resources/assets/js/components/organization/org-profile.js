@@ -204,7 +204,7 @@ Vue.component('org-profile', {
             _.each(this.states, (label, state) => {
                 options.push(state);
             });
-
+            
             return options;
         },
 
@@ -215,6 +215,10 @@ Vue.component('org-profile', {
             });
 
             return options;
+        },
+
+        state () {
+            this.$parent.setStepsCompleted();
         }
     }
 

@@ -23,6 +23,7 @@ class SetOrganization
         'email/verify',
         'email/verify/*',
         'admin/*',
+        'deactive',
     ];
 
     /**

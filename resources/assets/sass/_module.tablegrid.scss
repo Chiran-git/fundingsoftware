@@ -45,7 +45,7 @@
     }
     td, th {
         border-top: 0px solid $white;
-        padding: 0.5rem;
+        padding: 0.4rem;
         color: $gray-2;
         font-size: 16px;
     }
@@ -158,6 +158,14 @@
             border-top-right-radius: 10px;
             border-bottom-right-radius: 10px;
             color: $gray-5;
+        }
+    }
+
+    &-alt {
+        td {
+            &:last-child {
+                color: $black;
+            }
         }
     }
 }
@@ -459,7 +467,7 @@ table thead > tr > th[aria-sort][aria-sort=descending]:before {
 
 table thead > tr > th[aria-sort]:after {
     display: inline-block !important;
-    margin-left: 0.5em !important;
+    margin-left: 0em !important;
     width: 0.5em !important;
     font-size: inherit !important;
     line-height: inherit !important;

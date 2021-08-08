@@ -2,9 +2,10 @@
 
 namespace App;
 
+use App\Support\RJ;
 use App\Traits\Sluggable;
-use App\Traits\Presentable;
 use Illuminate\Support\Str;
+use App\Traits\Presentable;
 use App\Presenters\CampaignPresenter;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\HasFractionalMonetaryUnits;
@@ -36,6 +37,7 @@ class Campaign extends Model
         'name',
         'organization_id',
         'created_by_id',
+        'campaign_category_id',
         'fundraising_goal',
         'end_date',
         'description',
@@ -246,4 +248,23 @@ class Campaign extends Model
             ->where('end_date', '<=', now());
     }
 
+    /**
+     * Get the campaign image.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getImageAttribute($value)
+    {
+        return $value ? RJ::assetCdn($value) : null;
+    }
+
+    /**
+     * Method to get the category
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function category()
+    {
+        return $this->belongsTo(CampaignCategory::class, 'campaign_category_id');
+    }
 }

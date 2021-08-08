@@ -82,4 +82,55 @@ class DashboardController extends Controller
     {
         return redirect()->route('change-password');
     }
+
+    /**
+     * Show the online donations page
+     *
+     * @param Illuminate\Http\Request $request
+     *
+     * @return Illuminate\View\View
+     */
+    public function onlineDonations(Request $request)
+    {
+        $this->authorize('viewReport', $request->user());
+        return view('admin.reports.online-donations');
+    }
+
+    /**
+     * Show the donations stats
+     *
+     * @param Illuminate\Http\Request $request
+     *
+     * @return Illuminate\View\View
+     */
+    public function reportDonationStats(Request $request)
+    {
+        $this->authorize('viewReport', $request->user());
+        return view('admin.reports.donation-stats');
+    }
+
+    /**
+     * Show the category stats
+     *
+     * @param Illuminate\Http\Request $request
+     *
+     * @return Illuminate\View\View
+     */
+    public function reportCategoryStats(Request $request)
+    {
+        $this->authorize('viewReport', $request->user());
+        return view('admin.reports.category-stats');
+    }
+
+    /**
+     * Show the affiliation donations of a particular organization
+     *
+     * @param Illuminate\Http\Request $request
+     *
+     * @return Illuminate\View\View
+     */
+    public function reportAffiliationDonations()
+    {
+        return view('organization.reports.affiliation-donations');
+    }
 }

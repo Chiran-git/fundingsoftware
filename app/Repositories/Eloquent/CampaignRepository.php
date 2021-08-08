@@ -129,4 +129,55 @@ class CampaignRepository extends Repository implements CampaignRepositoryInterfa
 
         return false;
     }
+
+    /**
+     * Get the campaigns list.
+     *
+     * @param integer $limit
+     * @param boolean $pagination
+     * @param array   $params
+     *
+     * @return array
+     */
+    public function getCampaignsList($limit = 10, $pagination = true)
+    {
+        $sortBy = "";
+        if (!empty(request()->query('sort'))) {
+            $sortBy = json_decode(request()->query('sort'));
+        }
+
+        $query = $this->model
+            ->leftJoin('organizations', 'campaigns.organization_id', '=', 'organizations.id')
+            ->leftJoin('currencies', 'currencies.id', '=', 'organizations.currency_id')
+            ->select('campaigns.id', 'campaigns.name', 'campaigns.image', 'campaigns.created_at', 'campaigns.end_date', 'campaigns.fundraising_goal', 'campaigns.funds_raised', 'currencies.symbol')
+            ->when($sortBy, function ($query, $sortBy) {
+                return $query->orderBy($sortBy->fieldName, $sortBy->order);
+            }, function ($query) {
+                return $query->orderBy('campaigns.created_at', 'desc');
+            });
+
+        if (request()->query('status') == 'active') {
+            $query->where('campaigns.published_at', '<=', now())
+                    ->whereNull('campaigns.disabled_at')
+                    ->where(
+                        function ($query) {
+                            $query->whereNull('campaigns.end_date')
+                                ->orWhere('campaigns.end_date', '>=', now());
+                        }
+                    );
+        } elseif (request()->query('status') == 'completed') {
+            $query->where([
+                ['campaigns.published_at', '<=', now()],
+                ['campaigns.end_date', '<=', now()]
+            ])
+            ->whereNull('campaigns.disabled_at');
+        }
+
+        if ($pagination) {
+            return $query->paginate($limit);
+        } else {
+            $query->orderBy('campaigns.created_at', 'desc');
+            return $query->get();
+        }
+    }
 }

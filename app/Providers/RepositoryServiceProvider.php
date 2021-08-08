@@ -27,7 +27,8 @@ class RepositoryServiceProvider extends ServiceProvider
         \App\Repositories\Contracts\DonationRepositoryInterface::class => \App\Repositories\Eloquent\DonationRepository::class,
         \App\Repositories\Contracts\DonationQuestionAnswerRepositoryInterface::class => \App\Repositories\Eloquent\DonationQuestionAnswerRepository::class,
         \App\Repositories\Contracts\PayoutRepositoryInterface::class => \App\Repositories\Eloquent\PayoutRepository::class,
-
+        \App\Repositories\Contracts\CampaignCategoryRepositoryInterface::class => \App\Repositories\Eloquent\CampaignCategoryRepository::class,
+        \App\Repositories\Contracts\AffiliationRepositoryInterface::class => \App\Repositories\Eloquent\AffiliationRepository::class,
     ];
 
     /**

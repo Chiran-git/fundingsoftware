@@ -17,9 +17,10 @@ class VerifyOrganizationIsActive
      * @var array
      */
     protected $except = [
-        'logout',
-        'login',
-        'deactive',
+        '/logout',
+        '/login',
+        '/deactive',
+        '/admin/*'
     ];
 
     /**

@@ -104,6 +104,16 @@ Vue.component('campaign-pay-out', {
             this.form.payout_zipcode = this.payoutInfo.payout_zipcode;
         },
 
+        showChequePayablePreview (modalId) {
+            $('#' + modalId).modal('show');
+
+            if (this.form.errors.errors.payout_payable_to ) {
+                 delete this.form.errors.errors.payout_payable_to;
+            }
+
+            this.form.payout_payable_to = this.payoutInfo.payout_payable_to;
+        },
+
         submit (action = null) {
             RJ.put(`${RJ.apiBaseUrl}/organization/${this.organization.id}/campaign/${this.campaign.id}/payout`, this.form)
                 .then(response => {

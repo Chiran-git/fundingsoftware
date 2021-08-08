@@ -71,6 +71,7 @@ class Create implements ShouldQueue
             [
                 'organization_id' => $this->organization->id,
                 'donor_id' => $donor->id,
+                'affiliation_id' => $this->data['affiliation_id'],
                 'entry_type' => 'manual',
                 'donation_method' => $this->data['donation_method'],
                 'check_number' => $this->data['check_number'],

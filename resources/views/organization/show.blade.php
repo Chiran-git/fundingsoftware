@@ -54,7 +54,7 @@ use Illuminate\Support\Str;
                             <div class="col-12 col-md-3">
                                 <div class="p-2 p-md-3 mb-3 mb-md-0 border-hr ml-2">
                                     @if ($organization->logo)
-                                        <div class="img-fluid float-left float-md-none mr-2" style="background-image: url({{ RJ::assetCdn($organization->logo) }}); background-repeat: no-repeat; background-size: cover; background-position: center;"></div>
+                                        <div class="img-fluid float-left float-md-none mr-2" style="background-image: url({{ $organization->logo }}); background-repeat: no-repeat; background-size: cover; background-position: center;"></div>
                                     @endif
                                     <address>
                                         <p class="mb-2 f-16">{{ $organization->name }}</p>
@@ -77,15 +77,16 @@ use Illuminate\Support\Str;
                                         @if ($organization->appeal_photo)
                                             <div class="img-container float-right rounded-circle ml-4 mr-2" style="background-image: url({{ RJ::assetCdn($organization->appeal_photo) }}); background-repeat: no-repeat; background-size: cover;"></div>
                                         @endif
-                                        {{ $organization->appeal_message }}
+                                        {{ \Illuminate\Mail\Markdown::parse($organization->appeal_message) }}
                                     </div>
-
-                                    @include('partials.common.social-share', [
-                                        'shareUrl' => url()->current(),
-                                        'shareButton' => true,
-                                        'shareText' => __('Fund projects that matter :url', ['url' => url()->current()]),
-                                        'shareHeadline' => $organization->name,
-                                    ])
+                                    <p>
+                                        @include('partials.common.social-share', [
+                                            'shareUrl' => url()->current(),
+                                            'shareButton' => true,
+                                            'shareText' => __('Fund projects that matter :url', ['url' => url()->current()]),
+                                            'shareHeadline' => $organization->name,
+                                        ])
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -107,7 +108,7 @@ use Illuminate\Support\Str;
             <!-- Show on Desktop -->
             <div class="col-lg-3 d-none d-sm-block">
                 @if ($campaign->image)
-                    <img class="image-cover" src="{{ RJ::assetCdn($campaign->image) }}" alt="{{ $campaign->name }}">
+                    <img class="image-cover" src="{{ $campaign->image }}" alt="{{ $campaign->name }}">
                 @else
                     <div class="img-rounded-left d-flex justify-content-center align-items-center h-lg-100">
                         <span class="mb-2 d-block font-weight-bold">{{ __("No Image")}}</span>
@@ -118,7 +119,7 @@ use Illuminate\Support\Str;
                 <!-- Show on Mobile -->
                 <div class="d-flex align-items-center d-sm-none mb-2">
                     @if ($campaign->image)
-                        <img class="image-cover small-img rounded mr-2" src="{{ RJ::assetCdn($campaign->image) }}" alt="{{ $campaign->name }}">
+                        <img class="image-cover small-img rounded mr-2" src="{{ $campaign->image }}" alt="{{ $campaign->name }}">
                     @else
                         <div class="img-rounded-left d-flex justify-content-center align-items-center h-lg-100 rounded mr-2 small-img">
                             <span class="d-block font-weight-bold">{{ __("No Image")}}</span>

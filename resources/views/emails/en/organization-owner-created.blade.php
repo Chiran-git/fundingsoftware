@@ -17,7 +17,7 @@
 						<td>
 							@component('mail::button',
 								[
-									'url' => route('password.reset', ['token' => $token,])
+									'url' => route('password.reset', ['token' => $token, 'email' => $user->email])
 								]
 							)
 							{{ __('Create Password') }}

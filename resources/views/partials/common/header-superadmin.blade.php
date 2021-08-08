@@ -23,6 +23,36 @@
                         <i class="fas fa-users-cog"></i>
                     </a>
                 </li>
+
+                @if (request()->user()->isSuperAdmin() || (Session::get('impersonator_role') && Session::get('impersonator_role') == 'superadmin' ) )
+                <li class="dropdown nav-item {{ request()->is('*reports*') ? 'active' : '' }}">
+                    <a class="dropdown-toggle nav-link nav-link--icon" data-toggle="dropdown" href="#" role="button"
+                        aria-haspopup="false" aria-expanded="false">
+                        <span>
+                            {{ __('Reports')}}
+                            <i class="mdi mdi-account-circle mr-1"></i>
+                        </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu--top-arrow dropdown-menu-right dropdown-menu-animated topbar-dropdown-menu">
+                        <!-- item-->
+                        <a href="{{ route('reports.online-donations') }}" class="dropdown-item notify-item">
+                            <span>{{ __('Online donations')}}</span>
+                        </a>
+                        <!-- item-->
+                        <a href="{{ route('reports.donation-stats') }}" class="dropdown-item notify-item">
+                            <span>{{ __('Donation stats')}}</span>
+                        </a>
+                        <!-- item-->
+                        <a href="{{ route('reports.category-stats') }}" class="dropdown-item notify-item">
+                            <span>{{ __('Category')}}</span>
+                        </a>
+                        <!-- item-->
+                        <a href="{{ route('reports.affiliation-donations') }}" class="dropdown-item notify-item">
+                            <span>{{ __('Affiliation donations')}}</span>
+                        </a>
+                    </div>
+                </li>
+                @endif
             </ul>
             <ul class="navbar-nav align-items-lg-center">
                 {{--  <li class="nav-item">

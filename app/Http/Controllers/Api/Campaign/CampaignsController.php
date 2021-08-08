@@ -10,6 +10,7 @@ use App\Support\RJ;
 use App\Organization;
 use App\CampaignReward;
 use App\DonationReward;
+use App\CampaignCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CampaignResource;
@@ -18,6 +19,7 @@ use App\Jobs\Campaign\Create as CreateCampaignJob;
 use App\Jobs\Campaign\Update as UpdateCampaignJob;
 use App\Http\Requests\Campaign\SaveCampaignRequest;
 use App\Jobs\Campaign\Publish as PublishCampaignJob;
+use App\Http\Requests\Campaign\UpdateCampaignRequest;
 use App\Jobs\Campaign\Deactivate as DeactivateCampaignJob;
 use App\Jobs\Campaign\Reactivate as ReactivateCampaignJob;
 use App\Repositories\Contracts\CampaignRepositoryInterface;
@@ -83,7 +85,7 @@ class CampaignsController extends Controller
     public function update(
         Organization $organization,
         Campaign $campaign,
-        SaveCampaignRequest $request
+        UpdateCampaignRequest $request
     ) {
         if ($campaign = dispatch_now(new UpdateCampaignJob($organization, $campaign, $request->all()))) {
 
@@ -323,5 +325,16 @@ class CampaignsController extends Controller
         }
 
         return response()->json(['message' => __('Unabled to reactivate campaign.')], 400);
+    }
+
+    /**
+     * Method to get all the categories
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function categories()
+    {
+        $categories = CampaignCategory::all();
+        return response()->json($categories);
     }
 }

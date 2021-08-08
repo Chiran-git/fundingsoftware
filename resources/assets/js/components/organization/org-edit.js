@@ -85,13 +85,21 @@ Vue.component('org-edit', {
 
         changeStep (step) {
             // Change step only if the step is less than what has been completed
-            if (step <= this.stepsCompleted) {
+            /*if (step <= this.stepsCompleted) {
                 this.currentStep = step;
-            }
+            }*/
+            this.currentStep = step;
+            this.stepsCompleted = step - 1;
+            this.$root.refreshOrganization(this.organization.id);
+            this.scrollToTop();
         },
 
         scrollToTop () {
             this.$SmoothScroll(document.getElementById('account-setup'));
         },
+
+        setStepsCompleted () {
+            this.stepsCompleted = this.currentStep;        
+        }
     }
 });

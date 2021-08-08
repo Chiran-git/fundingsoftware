@@ -17,7 +17,7 @@ class CreateInvitationsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('organization_id')->unsigned();
             $table->bigInteger('invitee_id')->unsigned();
-            $table->json('campaign_ids')->nullable();
+            $table->text('campaign_ids')->nullable();
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->string('first_name');
             $table->string('last_name')->nullable();

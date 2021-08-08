@@ -12,7 +12,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class)->create([
+        User::factory()->create([
             'first_name' => 'Super',
             'last_name' => 'Admin',
             'email' => 'webmaster@rocketjar.com',

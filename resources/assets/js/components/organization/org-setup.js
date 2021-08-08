@@ -65,7 +65,7 @@ Vue.component('org-setup', {
 
         changeStep (step) {
             // Change step only if the step is less than what has been completed
-            if (step <= this.stepsCompleted) {
+            if (step <= this.stepsCompleted || step == (this.stepsCompleted + 1)) {
                 this.currentStep = step;
             }
         },
@@ -79,5 +79,12 @@ Vue.component('org-setup', {
         scrollToTop () {
             this.$SmoothScroll(document.getElementById('account-setup'));
         },
+
+        setStepsCompleted () {
+            this.stepsCompleted = 0;
+            if ((this.currentStep > 1) && (this.stepsCompleted != this.currentStep)) {
+                this.stepsCompleted = this.currentStep - 1;
+            }            
+        }
     }
 });
