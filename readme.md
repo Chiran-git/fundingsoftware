@@ -1,6 +1,6 @@
-# RocketJar Laravel Application
+# Laravel Application
 
-This is the main application for RocketJar website. Laravel has been chosen to build the application with VueJS in the frontend. Frontend has been decoupled from the backend so that all operations are performed via an API and later down the line the same API can be used for mobile applications or third party access.
+Laravel has been chosen to build the application with VueJS in the frontend. Frontend has been decoupled from the backend so that all operations are performed via an API and later down the line the same API can be used for mobile applications or third party access.
 
 ## Requirements
 * PHP 7.1+
